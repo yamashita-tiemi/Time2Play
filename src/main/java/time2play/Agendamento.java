@@ -22,6 +22,17 @@ public class Agendamento {
     @JoinColumn(name = "quadra_id")
     private Quadra quadra;
 
+    public Agendamento() {}
+
+    public Agendamento(LocalDateTime inicio, LocalDateTime fim, Cliente cliente, Quadra quadra) {
+        //verificar como faz pra ser autoincremento
+//        this.id = id;
+        setInicio(inicio);
+        setFim(fim);
+        setCliente(cliente);
+        setQuadra(quadra);
+    }
+
     public Long getId() {
         return id;
     }

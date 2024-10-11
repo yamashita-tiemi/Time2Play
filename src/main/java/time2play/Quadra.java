@@ -103,13 +103,13 @@ public class Quadra {
         this.status = status;
     }
 
-    public boolean verificarDisponibilidade(Quadra quadra, LocalDateTime horarioInicio, LocalDateTime horarioFim) {
-        if (quadra.status == INDISPONIVEL) {
+    public boolean verificarDisponibilidade(LocalDateTime inicio, LocalDateTime fim) {
+        if (this.status == INDISPONIVEL) {
             return false;
         }
-        for (Agendamento agendamento : quadra.agendamentos) {
+        for (Agendamento agendamento : this.agendamentos) {
             // Verifica se sobrepõem
-            if (!(horarioFim.isBefore(agendamento.getInicio()) || horarioInicio.isAfter(agendamento.getFim()))) {
+            if (!(fim.isBefore(agendamento.getInicio()) || inicio.isAfter(agendamento.getFim()))) {
                 return false;
             }
         }

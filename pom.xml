@@ -104,14 +104,14 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
                 <configuration>
-                    <changeLogFile>master.xml</changeLogFile>
-                    <outputChangeLogFile>changelog.xml</outputChangeLogFile>
-                    <diffChangeLogFile>
-                        ${project.basedir}/src/main/resources/db/migrations/${maven.build.timestamp}_changelog.xml
-                    </diffChangeLogFile>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                    <logging>debug</logging>
-<!--                    <propertyFile>./src/main/resources/liquibase.properties</propertyFile>-->
+<!--                    <changeLogFile>master.xml</changeLogFile>-->
+<!--                    <outputChangeLogFile>changelog.xml</outputChangeLogFile>-->
+<!--                    <diffChangeLogFile>-->
+<!--                        ${project.basedir}/src/main/resources/db/migrations/${maven.build.timestamp}_changelog.xml-->
+<!--                    </diffChangeLogFile>-->
+<!--                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>-->
+<!--                    <logging>debug</logging>-->
+                    <propertyFile>/src/main/resources/liquibase.properties</propertyFile>
                 </configuration>
                 <dependencies>
                     <dependency>
