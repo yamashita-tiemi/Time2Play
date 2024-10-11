@@ -107,13 +107,12 @@ public class Quadra {
         if (quadra.status == INDISPONIVEL) {
             return false;
         }
-        //ainda preciso ver como trabalhar com as datas
-//        for (Agendamento agendamento : quadra.agendamentos) {
-//            // Verifica se sobrepõem
-//            if (!(horarioFim.isBefore(agendamento.getHorarioInicio()) || horarioInicio.isAfter(agendamento.getHorarioFim()))) {
-//                return false;
-//            }
-//        }
+        for (Agendamento agendamento : quadra.agendamentos) {
+            // Verifica se sobrepõem
+            if (!(horarioFim.isBefore(agendamento.getInicio()) || horarioInicio.isAfter(agendamento.getFim()))) {
+                return false;
+            }
+        }
         return true;
     }
 }

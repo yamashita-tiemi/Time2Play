@@ -2,8 +2,7 @@ package time2play;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.Duration;
 
 @Entity
@@ -12,9 +11,8 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate data;
-    private LocalTime horarioInicio;
-    private LocalTime horarioFim;
+    private LocalDateTime inicio;
+    private LocalDateTime fim;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
@@ -28,28 +26,21 @@ public class Agendamento {
         return id;
     }
 
-    public LocalDate getData() {
-        return data;
+
+    public LocalDateTime getInicio() {
+        return inicio;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setInicio(LocalDateTime inicio) {
+        this.inicio = inicio;
     }
 
-    public LocalTime getHorarioInicio() {
-        return horarioInicio;
+    public LocalDateTime getFim() {
+        return fim;
     }
 
-    public void setHorarioInicio(LocalTime horarioInicio) {
-        this.horarioInicio = horarioInicio;
-    }
-
-    public LocalTime getHorarioFim() {
-        return horarioFim;
-    }
-
-    public void setHorarioFim(LocalTime horarioFim) {
-        this.horarioFim = horarioFim;
+    public void setFim(LocalDateTime fim) {
+        this.fim = fim;
     }
 
     public Cliente getCliente() {
@@ -73,7 +64,7 @@ public class Agendamento {
     }
 
     public long getNumeroHoras() {
-        Duration duracao = Duration.between(this.horarioInicio, this.horarioFim);
+        Duration duracao = Duration.between(this.inicio, this.fim);
         return duracao.toHours();
     }
 }
