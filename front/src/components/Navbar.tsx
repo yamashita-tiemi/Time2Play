@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
+// import ThemeType from 
+import { color, ColorProps } from 'styled-system';
 
 
 export const NavBar = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  backgroud-color: "0000";
+  align-items: center;
+  background-color: #2F5D55;
   width: 100%;
-  heigth: 80px
+  height: 60px;
 `;
 
 export const MainNavbar = styled.ul`
@@ -23,7 +26,7 @@ export const MainNavbar = styled.ul`
 export const NavLi = styled.li`
   text-align: center;
   margin: 15px auto;
-` 
+`;
 
 export const LogoNavbar = styled.div`
     width: 60%;
@@ -32,22 +35,28 @@ export const LogoNavbar = styled.div`
     justify-content: flex-start;
     align-items: center;
 `;
+
+export const LinkNavbar = styled(NavLink)`
+    color: #E4DED0;
+    text-decoration: none;
+    padding: 10px;
+`;
   
 export default function Navbar() {
     return (
         <NavBar>
             <LogoNavbar>
-                <NavLink to={"/"}>Logo</NavLink>
+                <LinkNavbar to={"/"}>Logo</LinkNavbar>
             </LogoNavbar>
             <MainNavbar>
                 <NavLi>
-                    <NavLink to={"/"}>Page 1</NavLink>
+                    <LinkNavbar to={"/orgs"}>Page 1</LinkNavbar>
                 </NavLi>
                 <NavLi>
-                    <NavLink to={"/"}>Page 2</NavLink>
+                    <LinkNavbar to={"/"}>Page 2</LinkNavbar>
                 </NavLi>
                 <NavLi>
-                    <NavLink to={"/"}>Login</NavLink>
+                    <LinkNavbar to={"/"}>Login</LinkNavbar>
                 </NavLi>
             </MainNavbar>
         </NavBar>
