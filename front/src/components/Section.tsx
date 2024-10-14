@@ -6,7 +6,7 @@ export const BoxSectionPrimary = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 20px;
     background-color: #E4DED0;
 `;
 

@@ -4,6 +4,7 @@ export const BoxTitle = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 20px;
 `;
 
 export const TextTitle = styled.h1`
@@ -11,12 +12,31 @@ export const TextTitle = styled.h1`
     font-size: 36px;
 `;
 
-export default function Title() {
+export default function Title(
+    {children}:{children: React.ReactNode}
+    ) {
     return (
         <BoxTitle>
             <TextTitle>
-                TITLE
+                {children}
             </TextTitle>
+        </BoxTitle>
+    );
+}
+
+export const TextTitleHorarios = styled.h1`
+    color: #000;
+    font-size: 20px;
+`;
+
+export function TitleHorarios(
+    {children}:{children: React.ReactNode}
+    ) {
+    return (
+        <BoxTitle>
+            <TextTitleHorarios>
+                {children}
+            </TextTitleHorarios>
         </BoxTitle>
     );
 }

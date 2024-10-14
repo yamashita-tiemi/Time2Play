@@ -56,6 +56,9 @@ export default function Navbar() {
                     <LinkNavbar to={"/quadras"}>Page 2</LinkNavbar>
                 </NavLi>
                 <NavLi>
+                    <LinkNavbar to={"/quadra"}>Page 3</LinkNavbar>
+                </NavLi>
+                <NavLi>
                     <LinkNavbar to={"/login"}>Login</LinkNavbar>
                 </NavLi>
             </MainNavbar>

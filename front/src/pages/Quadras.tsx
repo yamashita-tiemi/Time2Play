@@ -18,7 +18,7 @@ export const Quadras = () => {
         <>
             <Navbar/>
             <SecionPrimary>
-                <Title></Title>
+                <Title>Quadras</Title>
                 <Filter></Filter>
                 <QuadrasList>
                     <QuadraCard></QuadraCard>

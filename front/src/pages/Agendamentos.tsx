@@ -18,7 +18,7 @@ export const Agendamentos = () => {
         <>
             <Navbar/>
             <SecionPrimary>
-                <Title></Title>
+                <Title>Agendamento</Title>
                 <Filter></Filter>
                 <Orgs>
                     <OrgCard></OrgCard>
