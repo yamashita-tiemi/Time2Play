@@ -53,7 +53,7 @@ export default function Navbar() {
                     <LinkNavbar to={"/agendamentos"}>Page 1</LinkNavbar>
                 </NavLi>
                 <NavLi>
-                    <LinkNavbar to={"/"}>Page 2</LinkNavbar>
+                    <LinkNavbar to={"/quadras"}>Page 2</LinkNavbar>
                 </NavLi>
                 <NavLi>
                     <LinkNavbar to={"/"}>Login</LinkNavbar>

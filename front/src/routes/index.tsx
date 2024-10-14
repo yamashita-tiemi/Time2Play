@@ -4,6 +4,7 @@ import { BrowserRouter, Routes ,Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { NotFound } from '../pages/NotFound';
 import { Agendamentos } from '../pages/Agendamentos';
+import { Quadras } from '../pages/Quadras';
 
 // import { Home, NotFound } from '../pages/';
 
@@ -14,6 +15,7 @@ export const Rotas = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/agendamentos" element={<Agendamentos/>}/>
+        <Route path="/quadras" element={<Quadras/>}/>
       </Routes>
     </BrowserRouter>
   );

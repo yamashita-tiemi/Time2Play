@@ -1,31 +1,30 @@
 import { styled } from "styled-components";
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import OrgCard from "../components/Card/OrgCard";
 import Title from "../components/Title";
 import Filter from "../components/Filter";
 import SecionPrimary from "../components/Section";
+import QuadraCard from "../components/Card/QuadraCard";
 
-export const Orgs = styled.div`
+export const QuadrasList = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 `;
 
-export const Agendamentos = () => {
+export const Quadras = () => {
     return(
         <>
             <Navbar/>
             <SecionPrimary>
                 <Title></Title>
                 <Filter></Filter>
-                <Orgs>
-                    <OrgCard></OrgCard>
-                    <OrgCard></OrgCard>
-                    <OrgCard></OrgCard>
-                    <OrgCard></OrgCard>
-                </Orgs>
+                <QuadrasList>
+                    <QuadraCard></QuadraCard>
+                    <QuadraCard></QuadraCard>
+                    <QuadraCard></QuadraCard>
+                </QuadrasList>
             </SecionPrimary>
             <Footer/>
         </>
