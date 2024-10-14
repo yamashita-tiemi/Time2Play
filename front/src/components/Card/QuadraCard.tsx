@@ -1,3 +1,4 @@
+import { ButtonPrimary } from "../Button";
 import Text from "../Text";
 import { styled } from "styled-components";
 
@@ -28,7 +29,7 @@ export const InfoQuadra = styled.div`
     align-items: flex-start;
 `;
 
-export const ModalidadesOrg = styled.div`
+export const BoxModalidades = styled.div`
     width: 100%;
     height: 60px;
     display: flex;
@@ -37,14 +38,14 @@ export const ModalidadesOrg = styled.div`
     flex-wrap: wrap;
 `;
 
-export const ModalidadeOrg = styled.div`
+export const ModalidadeQuadra = styled.div`
     width: 30%;
     height: 24px;
     background-color: #E4DED0;
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    border: 2px solid #89ae29;
+    align-items: center;
     margin-right: 10px;
 `;
 
@@ -54,14 +55,16 @@ export default function QuadraCard() {
             <FotoQuadra></FotoQuadra>
             <InfoQuadra>
                 <Text>QUADRA Y</Text>
-                <ModalidadesOrg>
-                    <ModalidadeOrg>Volei</ModalidadeOrg>
-                    <ModalidadeOrg>Volei de areia</ModalidadeOrg>
-                    <ModalidadeOrg>Futebol</ModalidadeOrg>
-                    <ModalidadeOrg>Beach Tennis</ModalidadeOrg>
-                    <ModalidadeOrg>Futsal</ModalidadeOrg>
-                </ModalidadesOrg>
-                <p>BUTTON</p>
+                <BoxModalidades>
+                    <ModalidadeQuadra>Volei</ModalidadeQuadra>
+                    <ModalidadeQuadra>Volei de areia</ModalidadeQuadra>
+                    <ModalidadeQuadra>Futebol</ModalidadeQuadra>
+                    <ModalidadeQuadra>Beach Tennis</ModalidadeQuadra>
+                    <ModalidadeQuadra>Futsal</ModalidadeQuadra>
+                </BoxModalidades>
+                <ButtonPrimary>
+                    Ver Disponibilidade
+                </ButtonPrimary>
             </InfoQuadra>
         </BoxQuadra>
     );
