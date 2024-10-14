@@ -50,7 +50,7 @@ export default function Navbar() {
             </LogoNavbar>
             <MainNavbar>
                 <NavLi>
-                    <LinkNavbar to={"/orgs"}>Page 1</LinkNavbar>
+                    <LinkNavbar to={"/agendamentos"}>Page 1</LinkNavbar>
                 </NavLi>
                 <NavLi>
                     <LinkNavbar to={"/"}>Page 2</LinkNavbar>
