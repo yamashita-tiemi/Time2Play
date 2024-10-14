@@ -14,3 +14,18 @@ export default function Text(
         </BoxText>
     );
 }
+
+export const BoxTextLogin = styled.p`
+    font-size: 16px;
+    color: #000;
+`;
+
+export  function TextLogin(
+    {children}:{children: React.ReactNode}
+    ) {
+    return (
+        <BoxTextLogin>
+            {children}
+        </BoxTextLogin>
+    );
+}
