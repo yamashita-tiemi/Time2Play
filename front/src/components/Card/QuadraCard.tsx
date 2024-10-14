@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "../Button";
+import { ButtonQuadra } from "../Button";
 import Text from "../Text";
 import { styled } from "styled-components";
 
@@ -62,9 +62,9 @@ export default function QuadraCard() {
                     <ModalidadeQuadra>Beach Tennis</ModalidadeQuadra>
                     <ModalidadeQuadra>Futsal</ModalidadeQuadra>
                 </BoxModalidades>
-                <ButtonPrimary>
+                <ButtonQuadra>
                     Ver Disponibilidade
-                </ButtonPrimary>
+                </ButtonQuadra>
             </InfoQuadra>
         </BoxQuadra>
     );
