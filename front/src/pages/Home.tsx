@@ -1,6 +1,7 @@
 import { styled } from "styled-components"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
+import TorneioCard from "../components/Card/TorneioCard";
 
 export const SectionHome = styled.section`
     display: flex;
@@ -25,17 +26,6 @@ export const SectionHomeRight = styled.div`
     
 `;
 
-export const BoxTorneio = styled.div`
-    width: 80%;
-    background-color: #E4DED0;
-    border: 4px double #89ae29;
-    border-radius: 10px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
 export const Text = styled.p`
     font-size: 24px;
 `;
@@ -58,9 +48,7 @@ export const Home = () => {
                     </Text>
                 </SectionHomeLeft>
                 <SectionHomeRight>
-                    <BoxTorneio>
-                        Torneio
-                    </BoxTorneio>
+                    <TorneioCard/>
                 </SectionHomeRight>
             </SectionHome>
             <Footer/>
