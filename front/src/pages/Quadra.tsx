@@ -37,11 +37,6 @@ export const BoxDia = styled.div`
     height: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: #4da999a1;
-    border-radius: 10px;
-    padding: 5px;
 `;
 
 export const BoxAluguel = styled.div`
@@ -54,17 +49,17 @@ export const BoxAluguel = styled.div`
     border-radius: 10px;
 `;
 
-export const BoxInfos = styled.div`
+export const BoxInfos = styled.div<{ bg?: string }>`
     width: 100%;
     height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    background-color: #84a09b42;
+    background-color: ${(props) => props.bg || '#4da999a1'};
     border-radius: 10px;
     padding: 5px;
-    margin-bottom: 5%;
+    margin: 5% 0;
 `;
 
 export const BoxRight = styled.section`
@@ -122,12 +117,14 @@ export const Quadra = () => {
                 <BoxQuadra>
                     <BoxLeft>
                         <BoxDia>
-                        <TextTitleHorarios>Passo 1:</TextTitleHorarios>
-                            <Text color="#000" fontSize="20px">Escolha o Dia</Text>
+                            <TextTitleHorarios>Passo 1:</TextTitleHorarios>
+                            <BoxInfos>
+                            <Text color="#000" fontSize="20px">Selecione o Dia</Text>
                             <Text color="#000" fontSize="20px">Dia</Text>
+                            </BoxInfos>
                         </BoxDia>
                         <BoxAluguel>
-                            <BoxInfos>
+                            <BoxInfos bg="#84a09b42">
                                 <Text color="#000" fontSize="20px">Valor da Locação</Text>
                                 <Text color="#000" fontSize="20px">Valor Total</Text>
                             </BoxInfos>
@@ -135,7 +132,7 @@ export const Quadra = () => {
                         </BoxAluguel>
                     </BoxLeft>
                     <BoxRight>
-                        <TextTitleHorarios>Passo 2: Selecione os Horários</TextTitleHorarios>
+                        <TextTitleHorarios>Passo 2: Selecione o(s) Horário(s)</TextTitleHorarios>
                         <BoxHorarios>
                             <SubBoxHorarios>
                                 <BoxHorario>
