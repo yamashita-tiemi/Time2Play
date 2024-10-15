@@ -1,19 +1,23 @@
-package time2play;
+package time2play.entities;
 
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Modalidade {
+public class Organizacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
+    private String endereco;
 
-    @ManyToMany(mappedBy = "modalidades")
+    @OneToMany(mappedBy = "organizacao")
     private List<Quadra> quadras;
+
+    @OneToOne(mappedBy = "organizacao")
+    private Funcionario funcionario;
 
     public Long getId() {
         return id;
@@ -27,12 +31,28 @@ public class Modalidade {
         this.nome = nome;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     public List<Quadra> getQuadras() {
         return quadras;
     }
 
     public void setQuadras(List<Quadra> quadras) {
         this.quadras = quadras;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 }
 

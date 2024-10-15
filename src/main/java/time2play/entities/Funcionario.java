@@ -1,4 +1,4 @@
-package time2play;
+package time2play.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

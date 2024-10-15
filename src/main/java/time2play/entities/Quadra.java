@@ -1,6 +1,7 @@
-package time2play;
+package time2play.entities;
 
 import jakarta.persistence.*;
+import time2play.StatusQuadra;
 
 import java.time.LocalDateTime;
 import java.util.List;
