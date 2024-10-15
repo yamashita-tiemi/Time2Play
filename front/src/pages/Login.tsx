@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import { TextLogin } from "../components/Text";
 import { ButtonLogin } from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export const SectionLogin = styled.div`
     width: 100%;
@@ -55,6 +56,9 @@ export const InputLogin = styled.input`
 `;
 
 export const Login = () => {
+    const navigate = useNavigate();
+    const goAdmin = () => navigate("/admin");
+
     return (
         <>
             <Navbar />
@@ -68,7 +72,9 @@ export const Login = () => {
                             <TextLogin>Senha:</TextLogin>
                             <InputLogin placeholder="Digite sua senha aqui" />
                         </BoxInput>
-                        <ButtonLogin>Login</ButtonLogin>
+                        <ButtonLogin onClick={goAdmin}>
+                            Login
+                        </ButtonLogin>
                     </Box>
                 </BoxLogin>
             </SectionLogin>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ButtonQuadra } from "../Button";
 import Text from "../Text";
 import { styled } from "styled-components";
@@ -50,6 +51,9 @@ export const ModalidadeQuadra = styled.div`
 `;
 
 export default function QuadraCard() {
+    const navigate = useNavigate();
+    const goQuadra = () => navigate("/quadra");
+
     return (
         <BoxQuadra>
             <FotoQuadra></FotoQuadra>
@@ -62,7 +66,7 @@ export default function QuadraCard() {
                     <ModalidadeQuadra>Beach Tennis</ModalidadeQuadra>
                     <ModalidadeQuadra>Futsal</ModalidadeQuadra>
                 </BoxModalidades>
-                <ButtonQuadra>
+                <ButtonQuadra onClick={goQuadra}>
                     Ver Disponibilidade
                 </ButtonQuadra>
             </InfoQuadra>

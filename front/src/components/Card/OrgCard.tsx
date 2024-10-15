@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const BoxOrg = styled.div`
@@ -52,8 +53,11 @@ export const ModalidadeOrg = styled.div`
 `;
 
 export default function OrgCard() {
+    const navigate = useNavigate();
+    const goQuadras = () => navigate("/quadras");
+    
     return (
-        <BoxOrg>
+        <BoxOrg onClick={goQuadras}>
             <LogoOrg></LogoOrg>
             <BoxInfoOrg>
                 <NomeOrg>

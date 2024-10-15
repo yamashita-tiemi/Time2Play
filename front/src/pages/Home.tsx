@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
 import TorneioCard from "../components/Card/TorneioCard";
 import { ButtonPrimary } from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export const SectionHome = styled.section`
     display: flex;
@@ -34,6 +35,9 @@ export const Text = styled.p`
 
 
 export const Home = () => {
+    const navigate = useNavigate();
+    const goAgendamentos = () => navigate("/agendamentos");
+
     return(
         <>
             <Navbar/>
@@ -45,7 +49,7 @@ export const Home = () => {
                     <Text>
                         Phasellus rutrum urna eget semper placerat. 
                     </Text>
-                    <ButtonPrimary>
+                    <ButtonPrimary onClick={goAgendamentos}>
                         Agendar
                     </ButtonPrimary>
                 </SectionHomeLeft>
