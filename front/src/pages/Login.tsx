@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import { TextLogin } from "../components/Text";
+import Text, { TextLogin } from "../components/Text";
 import { ButtonLogin } from "../components/Button";
 import { useNavigate } from "react-router-dom";
 
@@ -67,9 +67,13 @@ export const Login = () => {
                     <Borda />
                     <Box>
                         <BoxInput>
-                            <TextLogin>Email:</TextLogin>
+                            <Text color="#000" fontSize="16px">
+                                Email:
+                            </Text>
                             <InputLogin placeholder="Digite seu email aqui" />
-                            <TextLogin>Senha:</TextLogin>
+                            <Text color="#000" fontSize="16px">
+                                Senha:
+                            </Text>
                             <InputLogin placeholder="Digite sua senha aqui" />
                         </BoxInput>
                         <ButtonLogin onClick={goAdmin}>
