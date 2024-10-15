@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import Text, { TextLogin } from "../components/Text";
+import Text from "../components/Text";
 import { ButtonLogin } from "../components/Button";
 import { useNavigate } from "react-router-dom";
 
