@@ -19,6 +19,7 @@ export const BoxQuadra = styled.section`
     height: 500px;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 `;
 
 export const BoxLeft = styled.section`
@@ -28,17 +29,42 @@ export const BoxLeft = styled.section`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 5% 0 2% 0;
-    background-color: blue;
+    padding-bottom: 2%;
 `;
 
 export const BoxDia = styled.div`
     width: 80%;
-    height: 20%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    background-color: #4da999a1;
+    border-radius: 10px;
+    padding: 5px;
+`;
+
+export const BoxAluguel = styled.div`
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 10px;
+`;
+
+export const BoxInfos = styled.div`
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #84a09b42;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 5%;
 `;
 
 export const BoxRight = styled.section`
@@ -51,13 +77,40 @@ export const BoxRight = styled.section`
 `;
 
 export const BoxHorarios = styled.div`
-    background-color: pink;
     width: 90%;
     height: 92%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+`;
+
+export const SubBoxHorarios = styled.div`
+    width: 49.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
+`;
+
+export const BoxHorario = styled.div`
+    width: 100%;
+    height: 10%;
+    display: flex;
+    margin-bottom: 1%;
+`;
+
+export const HorarioCheck = styled.div`
+    background-color: #2F5D55;
+    width: 15%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+`;
+
+export const Horario = styled.div`
+    background-color: #4da999a1;
+    width: 85%;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
 `;
 
 export const Quadra = () => {
@@ -69,18 +122,38 @@ export const Quadra = () => {
                 <BoxQuadra>
                     <BoxLeft>
                         <BoxDia>
-                            <Text>Escolha o Dia</Text>
-                            <Text>Dia</Text>
+                        <TextTitleHorarios>Passo 1:</TextTitleHorarios>
+                            <Text color="#000" fontSize="20px">Escolha o Dia</Text>
+                            <Text color="#000" fontSize="20px">Dia</Text>
                         </BoxDia>
-                        <BoxDia>
-                            <Text>Valor da Locação</Text>
-                            <Text>Valor Total</Text>
-                        </BoxDia>
-                        <ButtonPrimary>Alugar</ButtonPrimary>
+                        <BoxAluguel>
+                            <BoxInfos>
+                                <Text color="#000" fontSize="20px">Valor da Locação</Text>
+                                <Text color="#000" fontSize="20px">Valor Total</Text>
+                            </BoxInfos>
+                            <ButtonPrimary>Alugar</ButtonPrimary>
+                        </BoxAluguel>
                     </BoxLeft>
                     <BoxRight>
-                        <TextTitleHorarios>Selecione os Horários</TextTitleHorarios>
-                        <BoxHorarios></BoxHorarios>
+                        <TextTitleHorarios>Passo 2: Selecione os Horários</TextTitleHorarios>
+                        <BoxHorarios>
+                            <SubBoxHorarios>
+                                <BoxHorario>
+                                    <HorarioCheck></HorarioCheck>
+                                    <Horario></Horario>
+                                </BoxHorario>
+                                <BoxHorario>
+                                    <HorarioCheck></HorarioCheck>
+                                    <Horario></Horario>
+                                </BoxHorario>
+                            </SubBoxHorarios>
+                            <SubBoxHorarios>
+                                <BoxHorario>
+                                    <HorarioCheck></HorarioCheck>
+                                    <Horario></Horario>
+                                </BoxHorario>
+                            </SubBoxHorarios>
+                        </BoxHorarios>
                     </BoxRight>
                 </BoxQuadra>
             </SectionQuadra>
