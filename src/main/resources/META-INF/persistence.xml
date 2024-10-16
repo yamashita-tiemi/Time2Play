@@ -1,14 +1,33 @@
-<persistence xmlns="http://java.sun.com/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
-    <persistence-unit name="com.liquibase.hibernate.tutorial.jpa" transaction-type="RESOURCE_LOCAL">
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="TimePlayPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>time2play.entities.Organizacao</class>
+        <class>time2play.entities.Quadra</class>
+        <class>time2play.entities.Modalidade</class>
+        <class>time2play.entities.Cliente</class>
+        <class>time2play.entities.Funcionario</class>
+        <class>time2play.entities.Usuario</class>
+        <class>time2play.entities.Agendamento</class>
+
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
-            <property name="jakarta.persistence.provider" value="org.hibernate.jpa.HibernatePersistenceProvider" />
-            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:file:~/test" />
-            <property name="jakarta.persistence.jdbc.user" value="dbuser" />
-            <property name="jakarta.persistence.jdbc.password" value="letmein" />
-            <property name="hibernate.connection.handling_mode" value="delayed_acquisition_and_release_after_transaction" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/databatime2play"/>
+            <property name="jakarta.persistence.jdbc.user" value="myuser"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+<!--            <property name="hibernate.hbm2ddl.auto" value="none"/>-->
+
+            <property name="liquibase.changelog" value="src/main/resources/changelog.xml"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

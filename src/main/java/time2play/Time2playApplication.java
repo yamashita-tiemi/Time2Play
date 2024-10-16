@@ -2,6 +2,8 @@ package time2play;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.CommandLineRunner;
+import time2play.entities.Usuario;
 
 @SpringBootApplication
 public class Time2playApplication {
@@ -10,4 +12,10 @@ public class Time2playApplication {
         SpringApplication.run(Time2playApplication.class, args);
     }
 
+    public CommandLineRunner demo(UsuarioRepository repository) {
+        return (args) -> {
+            Usuario usuario = repository.findByid(1L);
+            System.out.println(usuario.toString());
+        };
+    }
 }

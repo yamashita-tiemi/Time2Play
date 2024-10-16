@@ -1,8 +1,8 @@
 package time2play.entities;
 
 import jakarta.persistence.*;
-
 @Entity
+//@Table(Name)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id
@@ -13,6 +13,12 @@ public class Usuario {
     private String email;
     private String senha;
     private String telefone;
+//    @PersistenceContext(unitName = "TimePlayPU")
+//    @PersistenceUnit(unitName="TimePlayPU")
+//    private EntityManager em;
+//    @PersistenceContext(unitName = "TimePlayPU")
+//            EntityManagerFactory emf = Persistence.createEntityManagerFactory("TimePlayPU");
+//            EntityManager em = emf.createEntityManager();
 
     public Usuario() {}
 
@@ -58,4 +64,8 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+//    public void getNomeTable() {
+//        System.out.println(this.nome.);
+//    }
 }
