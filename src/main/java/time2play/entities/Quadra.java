@@ -36,6 +36,14 @@ public class Quadra {
     )
     private List<Modalidade> modalidades;
 
+    public Quadra() {}
+
+    public Quadra(String nome, Float valorAluguel, Organizacao organizacao) {
+        setNome(nome);
+        setValor(valorAluguel);
+        setOrganizacao(organizacao);
+    }
+
     public Long getId() {
         return id;
     }

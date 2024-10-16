@@ -19,6 +19,14 @@ public class Organizacao {
     @OneToOne(mappedBy = "organizacao")
     private Funcionario funcionario;
 
+    public Organizacao() {}
+
+    public Organizacao(String nome, String endereco, Funcionario funcionario) {
+        setNome(nome);
+        setEndereco(endereco);
+        setFuncionario(funcionario);
+    }
+
     public Long getId() {
         return id;
     }

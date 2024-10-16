@@ -1,0 +1,22 @@
+<changeSet id="1" author="cm">
+    <insert tableName="Usuario">
+        <column name="email" value="joao.silva@example.com"/>
+        <column name="nome" value="João Silva"/>
+        <column name="senha" value="senha123"/>
+        <column name="telefone" value="(31) 91234-5678"/>
+    </insert>
+
+    <insert tableName="Usuario">
+        <column name="email" value="maria.oliveira@example.com"/>
+        <column name="nome" value="Maria Oliveira"/>
+        <column name="senha" value="senha456"/>
+        <column name="telefone" value="(31) 98765-4321"/>
+    </insert>
+
+    <insert tableName="Usuario">
+        <column name="email" value="pedro.santos@example.com"/>
+        <column name="nome" value="Pedro Santos"/>
+        <column name="senha" value="senha789"/>
+        <column name="telefone" value="(31) 99876-5432"/>
+    </insert>
+</changeSet>

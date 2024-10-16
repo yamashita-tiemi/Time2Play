@@ -11,4 +11,6 @@
         http://www.liquibase.org/xml/ns/pro
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
         <include file="/src/main/resources/updates/hibernate-generated-changelog.xml"/>
+        <include file="/src/main/resources/db-carga-minima.xml"/>
+
 </databaseChangeLog>

@@ -12,6 +12,12 @@ public class Cliente extends Usuario {
     @OneToMany(mappedBy = "cliente")
     private List<Agendamento> agendamentos;
 
+    public Cliente() {}
+
+    public Cliente(String nome, String email, String senha, String telefone) {
+        super(nome, email, senha, telefone);
+    }
+
     public List<Agendamento> getAgendamentos() {
         return agendamentos;
     }

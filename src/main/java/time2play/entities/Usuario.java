@@ -14,6 +14,15 @@ public class Usuario {
     private String senha;
     private String telefone;
 
+    public Usuario() {}
+
+    public Usuario(String nome, String email, String senha, String telefone) {
+        setNome(nome);
+        setEmail(email);
+        setSenha(senha);
+        setTelefone(telefone);
+    }
+
     public Long getId() {
         return id;
     }

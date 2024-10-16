@@ -15,6 +15,12 @@ public class Modalidade {
     @ManyToMany(mappedBy = "modalidades")
     private List<Quadra> quadras;
 
+    public Modalidade() {}
+
+    public Modalidade(String nome) {
+        setNome(nome);
+    }
+
     public Long getId() {
         return id;
     }

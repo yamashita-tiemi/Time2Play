@@ -11,6 +11,13 @@ public class Funcionario extends Usuario {
     @JoinColumn(name = "organizacao_id")
     private Organizacao organizacao;
 
+    public  Funcionario() {}
+
+    public Funcionario(String nome, String email, String senha, String telefone, Organizacao organizacao) {
+        super(nome, email, senha, telefone);
+        setOrganizacao(organizacao);
+    }
+
     public Organizacao getOrganizacao() {
         return organizacao;
     }
