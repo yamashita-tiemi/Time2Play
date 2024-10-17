@@ -13,12 +13,6 @@ public class Usuario {
     private String email;
     private String senha;
     private String telefone;
-//    @PersistenceContext(unitName = "TimePlayPU")
-//    @PersistenceUnit(unitName="TimePlayPU")
-//    private EntityManager em;
-//    @PersistenceContext(unitName = "TimePlayPU")
-//            EntityManagerFactory emf = Persistence.createEntityManagerFactory("TimePlayPU");
-//            EntityManager em = emf.createEntityManager();
 
     public Usuario() {}
 

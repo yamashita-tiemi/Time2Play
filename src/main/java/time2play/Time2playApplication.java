@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import time2play.entities.Usuario;
+import time2play.interfaces.UsuarioRepository;
 
 @SpringBootApplication
 public class Time2playApplication {
