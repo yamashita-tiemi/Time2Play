@@ -5,6 +5,9 @@ import OrgCard from "../components/Card/OrgCard";
 import Title from "../components/Title";
 import Filter from "../components/Filter";
 import SecionPrimary from "../components/Section";
+import { OrganizacaoType } from "models/organizacao.interface";
+import { useEffect, useState } from "react";
+import { Organizacao } from "../api";
 
 export const Orgs = styled.div`
     width: 100%;
@@ -14,9 +17,25 @@ export const Orgs = styled.div`
 `;
 
 export const Agendamentos = () => {
-    return(
+    const [orgs, setOrgs] = useState<OrganizacaoType[]>([]);
+    const [isError, setIsError] = useState<boolean>(false);
+
+    useEffect(() => {
+        Organizacao.getPosts()
+            .then((data) => {
+                setOrgs(data);
+                console.log(data)
+            })
+            .catch((err) => {
+                setIsError(true);
+            });
+        return () => { };
+    }, []);
+
+
+    return (
         <>
-            <Navbar/>
+            <Navbar />
             <SecionPrimary>
                 <Title>Agendamento</Title>
                 <Filter></Filter>
@@ -27,7 +46,7 @@ export const Agendamentos = () => {
                     <OrgCard></OrgCard>
                 </Orgs>
             </SecionPrimary>
-            <Footer/>
+            <Footer />
         </>
     )
 }

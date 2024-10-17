@@ -2,6 +2,7 @@ package time2play.controller;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import time2play.entities.Quadra;
 import time2play.interfaces.QuadraRepository;
@@ -20,6 +21,11 @@ public class QuadraController {
     @GetMapping("/quadras")
     List<Quadra> findAll() {
         return (List<Quadra>) repository.findAll();
+    }
+
+    @RequestMapping("/quadra")
+    public Quadra teste() {
+        return repository.findByid(1L);
     }
 
 }

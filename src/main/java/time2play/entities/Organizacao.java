@@ -45,6 +45,14 @@ public class Organizacao {
         this.endereco = endereco;
     }
 
+    public String getLogo_path() {
+        return logo_path;
+    }
+
+    public void setLogo_path(String logo_path) {
+        this.logo_path = logo_path;
+    }
+
     public Funcionario getFuncionario() {
         return funcionario;
     }

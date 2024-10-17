@@ -6,4 +6,5 @@ import time2play.entities.Quadra;
 
 @Repository
 public interface QuadraRepository extends CrudRepository<Quadra, Long> {
+    Quadra findByid(long id);
 }

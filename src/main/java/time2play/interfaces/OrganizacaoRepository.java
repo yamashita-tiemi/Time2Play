@@ -6,5 +6,5 @@ import time2play.entities.Organizacao;
 
 @Repository
 public interface OrganizacaoRepository extends CrudRepository<Organizacao, Long> {
-
+    Organizacao findByid(long id);
 }
