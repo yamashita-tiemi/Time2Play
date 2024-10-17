@@ -15,9 +15,8 @@ public class Quadra {
     private Long id;
 
     private String nome;
-    private String localizacao;
-    private Boolean disponivel;
-    private Float valorAluguel;
+    private Float valor_aluguel;
+    private String foto_path;
     @Enumerated(EnumType.STRING)
     private StatusQuadra status;
 
@@ -56,28 +55,12 @@ public class Quadra {
         this.nome = nome;
     }
 
-    public String getLocalizacao() {
-        return localizacao;
-    }
-
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
-    }
-
-    public Boolean getDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(Boolean disponivel) {
-        this.disponivel = disponivel;
-    }
-
     public Float getValor() {
-        return valorAluguel;
+        return valor_aluguel;
     }
 
     public void setValor(Float valor) {
-        this.valorAluguel = valorAluguel;
+        this.valor_aluguel = valor_aluguel;
     }
 
     public Organizacao getOrganizacao() {

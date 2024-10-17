@@ -13,4 +13,147 @@
         <include file="/src/main/resources/updates/hibernate-generated-changelog.xml"/>
 <!--        <include file="/src/main/resources/db-carga-minima.xml"/>-->
 
+    <changeSet id="1" author="cm" runOnChange="true">
+                    <insert tableName="Usuario">
+                            <column name="email" value="joao.silva@example.com"/>
+                            <column name="nome" value="João Silva"/>
+                            <column name="senha" value="senha123"/>
+                            <column name="telefone" value="(31) 91234-5678"/>
+                    </insert>
+
+                    <insert tableName="Usuario">
+                            <column name="email" value="maria.oliveira@example.com"/>
+                            <column name="nome" value="Maria Oliveira"/>
+                            <column name="senha" value="senha456"/>
+                            <column name="telefone" value="(31) 98765-4321"/>
+                    </insert>
+
+                    <insert tableName="Usuario">
+                            <column name="email" value="pedro.santos@example.com"/>
+                            <column name="nome" value="Pedro Santos"/>
+                            <column name="senha" value="senha789"/>
+                            <column name="telefone" value="(31) 99876-5432"/>
+                    </insert>
+
+
+                    <insert tableName="Organizacao">
+                            <column name="nome" value="Academia Atlética"/>
+                            <column name="endereco" value="Rua das Flores, 123, Centro, Juiz de Fora"/>
+                    </insert>
+
+                    <insert tableName="Organizacao">
+                            <column name="nome" value="Sports Club"/>
+                            <column name="endereco" value="Av. Brasil, 45, Juiz de Fora"/>
+                    </insert>
+
+                    <insert tableName="Organizacao">
+                            <column name="nome" value="Quadras MG"/>
+                            <column name="endereco" value="Rua Sete, 789, Juiz de Fora"/>
+                    </insert>
+
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Quadra Poliesportiva 1"/>
+                            <column name="valor_aluguel" value="100.50"/>
+                            <column name="organizacao_id" value="1"/>
+                    </insert>
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Quadra de Tênis"/>
+                            <column name="valor_aluguel" value="150.00"/>
+                            <column name="organizacao_id" value="1"/>
+                    </insert>
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Campo de Futebol"/>
+                            <column name="valor_aluguel" value="200.00"/>
+                            <column name="organizacao_id" value="1"/>
+                    </insert>
+
+
+                    <insert tableName="Modalidade">
+                            <column name="nome" value="Futebol"/>
+                    </insert>
+
+                    <insert tableName="Modalidade">
+                            <column name="nome" value="Basquete"/>
+                    </insert>
+
+                    <insert tableName="Modalidade">
+                            <column name="nome" value="Tênis"/>
+                    </insert>
+
+                    <insert tableName="Modalidade">
+                        <column name="nome" value="Volei"/>
+                    </insert>
+
+
+    <!--                <insert tableName="Funcionario">-->
+    <!--                        <column name="email" value="joao.funcionario@example.com"/>-->
+    <!--                        <column name="nome" value="João Funcionário"/>-->
+    <!--                        <column name="senha" value="senha123"/>-->
+    <!--                        <column name="telefone" value="(31) 98765-4321"/>-->
+    <!--                        <column name="organizacao_id" value="1"/>-->
+    <!--                </insert>-->
+
+    <!--                <insert tableName="Funcionario">-->
+    <!--                        <column name="email" value="ana.funcionario@example.com"/>-->
+    <!--                        <column name="nome" value="Ana Funcionário"/>-->
+    <!--                        <column name="senha" value="senha456"/>-->
+    <!--                        <column name="telefone" value="(11) 99876-5432"/>-->
+    <!--                        <column name="organizacao_id" value="2"/>-->
+    <!--                </insert>-->
+
+    <!--                <insert tableName="Funcionario">-->
+    <!--                        <column name="email" value="carlos.funcionario@example.com"/>-->
+    <!--                        <column name="nome" value="Carlos Funcionário"/>-->
+    <!--                        <column name="senha" value="senha789"/>-->
+    <!--                        <column name="telefone" value="(31) 98888-7777"/>-->
+    <!--                        <column name="organizacao_id" value="3"/>-->
+    <!--                </insert>-->
+
+
+    <!--                <insert tableName="Cliente">-->
+    <!--                        <column name="email" value="maria.cliente@example.com"/>-->
+    <!--                        <column name="nome" value="Maria Cliente"/>-->
+    <!--                        <column name="senha" value="senha456"/>-->
+    <!--                        <column name="telefone" value="(31) 99876-1234"/>-->
+    <!--                </insert>-->
+
+    <!--                <insert tableName="Cliente">-->
+    <!--                        <column name="email" value="joao.cliente@example.com"/>-->
+    <!--                        <column name="nome" value="João Cliente"/>-->
+    <!--                        <column name="senha" value="senha789"/>-->
+    <!--                        <column name="telefone" value="(31) 99887-6543"/>-->
+    <!--                </insert>-->
+
+    <!--                <insert tableName="Cliente">-->
+    <!--                        <column name="email" value="ana.cliente@example.com"/>-->
+    <!--                        <column name="nome" value="Ana Cliente"/>-->
+    <!--                        <column name="senha" value="senha123"/>-->
+    <!--                        <column name="telefone" value="(31) 98765-4321"/>-->
+    <!--                </insert>-->
+
+
+    <!--                <insert tableName="Agendamento">-->
+    <!--                        <column name="inicio" value="2024-10-10T14:00:00"/>-->
+    <!--                        <column name="fim" value="2024-10-10T15:00:00"/>-->
+    <!--                        <column name="cliente_id" value="1"/>-->
+    <!--                        <column name="quadra_id" value="1"/>-->
+    <!--                </insert>-->
+
+    <!--                <insert tableName="Agendamento">-->
+    <!--                        <column name="inicio" value="2024-10-11T17:00:00"/>-->
+    <!--                        <column name="fim" value="2024-10-11T18:00:00"/>-->
+    <!--                        <column name="cliente_id" value="2"/>-->
+    <!--                        <column name="quadra_id" value="1"/>-->
+    <!--                </insert>-->
+
+    <!--                <insert tableName="Agendamento">-->
+    <!--                        <column name="inicio" value="2024-10-12T10:00:00"/>-->
+    <!--                        <column name="fim" value="2024-10-12T11:30:00"/>-->
+    <!--                        <column name="cliente_id" value="3"/>-->
+    <!--                        <column name="quadra_id" value="3"/>-->
+    <!--                </insert>-->
+    </changeSet>
 </databaseChangeLog>

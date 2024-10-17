@@ -12,6 +12,7 @@ public class Organizacao {
 
     private String nome;
     private String endereco;
+    private String logo_path;
 
     @OneToMany(mappedBy = "organizacao")
     private List<Quadra> quadras;

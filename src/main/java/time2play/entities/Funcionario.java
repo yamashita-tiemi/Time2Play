@@ -3,11 +3,12 @@ package time2play.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Funcionario extends Usuario {
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "organizacao_id")
     private Organizacao organizacao;
 
