@@ -14,9 +14,6 @@ public class Organizacao {
     private String endereco;
     private String logo_path;
 
-    @OneToMany(mappedBy = "organizacao")
-    private List<Quadra> quadras;
-
     @OneToOne(mappedBy = "organizacao")
     private Funcionario funcionario;
 
@@ -46,14 +43,6 @@ public class Organizacao {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public List<Quadra> getQuadras() {
-        return quadras;
-    }
-
-    public void setQuadras(List<Quadra> quadras) {
-        this.quadras = quadras;
     }
 
     public Funcionario getFuncionario() {

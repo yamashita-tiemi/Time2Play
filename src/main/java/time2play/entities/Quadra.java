@@ -24,9 +24,6 @@ public class Quadra {
     @JoinColumn(name = "organizacao_id")
     private Organizacao organizacao;
 
-    @OneToMany(mappedBy = "quadra")
-    private List<Agendamento> agendamentos;
-
     @ManyToMany
     @JoinTable(
             name = "quadra_modalidade",
@@ -71,14 +68,6 @@ public class Quadra {
         this.organizacao = organizacao;
     }
 
-    public List<Agendamento> getAgendamentos() {
-        return agendamentos;
-    }
-
-    public void setAgendamentos(List<Agendamento> agendamentos) {
-        this.agendamentos = agendamentos;
-    }
-
     public List<Modalidade> getModalidades() {
         return modalidades;
     }
@@ -99,12 +88,12 @@ public class Quadra {
         if (this.status == INDISPONIVEL) {
             return false;
         }
-        for (Agendamento agendamento : this.agendamentos) {
-            // Verifica se sobrepõem
-            if (!(fim.isBefore(agendamento.getInicio()) || inicio.isAfter(agendamento.getFim()))) {
-                return false;
-            }
-        }
+//        for (Agendamento agendamento : this.agendamentos) {
+//            // Verifica se sobrepõem
+//            if (!(fim.isBefore(agendamento.getInicio()) || inicio.isAfter(agendamento.getFim()))) {
+//                return false;
+//            }
+//        }
         return true;
     }
 }
