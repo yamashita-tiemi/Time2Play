@@ -18,6 +18,18 @@ export const BoxButtonPrimary = styled.button`
     font-weight: 600;
     font-size: 20px;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 8px 8px 16px -5px rgba(0,0,0,0.8);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 8px 8px 16px -5px rgba(0,0,0,0.8);
+    }
 `;
 
 export const ButtonPrimary:React.FC<ButtonProps> = props => {
@@ -42,6 +54,18 @@ export const BoxButtonQuadra = styled.button`
     -webkit-box-shadow: 10px 10px 18px -7px rgba(0,0,0,0.8);
     -moz-box-shadow: 10px 10px 18px -7px rgba(0,0,0,0.8);
     font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+        transform: scale(1.08);
+        box-shadow: 8px 8px 12px -5px rgba(0,0,0,0.8);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 8px 8px 12px -5px rgba(0,0,0,0.8);
+    }
 `;
 
 export const ButtonQuadra:React.FC<ButtonProps> = props => {
@@ -67,6 +91,18 @@ export const BoxButtonLogin = styled.button`
     -moz-box-shadow: 10px 10px 18px -7px rgba(0,0,0,0.8);
     font-weight: 600;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 8px 8px 16px -5px rgba(0,0,0,0.8);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 8px 8px 16px -5px rgba(0,0,0,0.8);
+    }
 `;
 
 export const ButtonLogin:React.FC<ButtonProps> = props => {

@@ -11,6 +11,18 @@ export const BoxOrg = styled.div`
     align-items: center;
     margin: 10px 0;
     border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 6px 6px 10px -5px rgba(0,0,0,0.8);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 8px 8px 16px -5px rgba(0,0,0,0.8);
+    }
 `;
 
 export const LogoOrg = styled.div`
