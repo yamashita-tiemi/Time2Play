@@ -28,7 +28,7 @@ export const Organizacao = {
 };
 
 export const QuadraAPI = {
-	getQuadras: (): Promise<QuadraType[]> => requests.get('quadras'),
+	getQuadras: (id_org: number): Promise<QuadraType[]> => requests.get(`quadras/${id_org}`),
 	getQuadra: (id: number): Promise<QuadraType> => requests.get(`quadra/${id}`),
 	// creatQuadra: (post: QuadraType): Promise<QuadraType> =>
 	// 	requests.post('posts', post),

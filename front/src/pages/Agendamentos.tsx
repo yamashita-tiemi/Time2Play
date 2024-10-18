@@ -24,7 +24,6 @@ export const Agendamentos = () => {
         Organizacao.getOrgs()
             .then((data) => {
                 setOrgs(data);
-                console.log(data)
             })
             .catch((err) => {
                 setIsError(true);

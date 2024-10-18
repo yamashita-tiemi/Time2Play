@@ -54,7 +54,9 @@ export const ModalidadeOrg = styled.div`
 
 export default function OrgCard({organizacao}:{organizacao:any}) {
     const navigate = useNavigate();
-    const goQuadras = () => navigate("/quadras");
+    const goQuadras = () => {
+        navigate(`/${organizacao.nome}`, { state: { id_org: organizacao.id } })
+    }
     
     return (
         <BoxOrg onClick={goQuadras}>

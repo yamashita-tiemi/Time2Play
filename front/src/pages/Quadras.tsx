@@ -6,8 +6,10 @@ import Filter from "../components/Filter";
 import SecionPrimary from "../components/Section";
 import QuadraCard from "../components/Card/QuadraCard";
 import { QuadraType } from "models/quadra.interface";
-import { QuadraAPI } from "../api";
+import { Organizacao, QuadraAPI } from "../api";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { OrganizacaoType } from "models/organizacao.interface";
 
 export const QuadrasList = styled.div`
     width: 100%;
@@ -20,15 +22,16 @@ export const Quadras = () => {
     const [quadras, setQuadras] = useState<QuadraType[]>([]);
     const [isError, setIsError] = useState<boolean>(false);
 
+    const location = useLocation();
+    const { id_org } = location.state as { id_org: number }
+
     useEffect(() => {
-        QuadraAPI.getQuadras()
+        QuadraAPI.getQuadras(id_org)
             .then((data) => {
                 setQuadras(data)
-                console.log(data)
             })
             .catch((err) => {
                 setIsError(true)
-                console.log("erro")
             });
         return () => { };
     }, []);

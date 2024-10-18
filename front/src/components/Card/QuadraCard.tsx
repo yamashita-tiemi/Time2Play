@@ -55,7 +55,7 @@ export const ModalidadeQuadra = styled.div`
 export default function QuadraCard({quadra}:{quadra:QuadraType}) {
     const navigate = useNavigate();
     const goQuadra = () => {
-        navigate(`/quadra/${quadra.nome}`, { state: { id: quadra.id } })
+        navigate(`/${quadra.organizacao.nome}/${quadra.id}`, { state: { id: quadra.id } })
     }
 
     return (

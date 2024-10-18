@@ -123,11 +123,9 @@ export const Quadra = () => {
         QuadraAPI.getQuadra(id)
             .then((data) => {
                 setQuadra(data)
-                console.log(data)
             })
             .catch((err) => {
                 setIsError(true)
-                console.log("erro")
             });
         return () => { };
     }, []);

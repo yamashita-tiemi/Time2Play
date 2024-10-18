@@ -4,9 +4,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import time2play.entities.Quadra;
 
+import java.util.List;
+
 @Repository
 public interface QuadraRepository extends CrudRepository<Quadra, Long> {
     Quadra findByid(long id);
 
-    Quadra findQuadrasByOrganizacao_IdIs(long id_organizacao);
+    List<Quadra> findAllByOrganizacaoIdIs(long id_organizacao);
 }

@@ -21,10 +21,10 @@ public class QuadraController {
     List<Quadra> findAll() {
         return (List<Quadra>) repository.findAll();
     }
-    
+
     @GetMapping(path = {"/quadras/{id_org}"})
     List<Quadra> findByOrg(@PathVariable long id_org) {
-        return (List<Quadra>) repository.findQuadrasByOrganizacao_IdIs(id_org);
+        return (List<Quadra>) repository.findAllByOrganizacaoIdIs(id_org);
     }
 
     @GetMapping(path = {"/quadra/{id}"})
