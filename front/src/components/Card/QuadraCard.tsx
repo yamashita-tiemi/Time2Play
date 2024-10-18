@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { ButtonQuadra } from "../Button";
 import Text from "../Text";
 import { styled } from "styled-components";
+import { QuadraType } from "models/quadra.interface";
+import { QuadraAPI } from "../../api";
 
 export const BoxQuadra = styled.div`
     background-color: #5E7430;
@@ -50,17 +52,23 @@ export const ModalidadeQuadra = styled.div`
     margin-right: 10px;
 `;
 
-export default function QuadraCard() {
+export default function QuadraCard({quadra}:{quadra:QuadraType}) {
     const navigate = useNavigate();
-    const goQuadra = () => navigate("/quadra");
+    const goQuadra = () => {
+        navigate(`/quadra/${quadra.nome}`, { state: { id: quadra.id } })
+    }
 
     return (
         <BoxQuadra>
             <FotoQuadra></FotoQuadra>
             <InfoQuadra>
-                <Text>QUADRA Y</Text>
+                <Text>
+                    {quadra.nome}
+                </Text>
                 <BoxModalidades>
-                    <ModalidadeQuadra>Volei</ModalidadeQuadra>
+                    {/* {quadra.modalidades.map((modalidade) => (
+                        <ModalidadeQuadra>modalidade.nome</ModalidadeQuadra>
+                    ))} */}
                     <ModalidadeQuadra>Volei de areia</ModalidadeQuadra>
                     <ModalidadeQuadra>Futebol</ModalidadeQuadra>
                     <ModalidadeQuadra>Beach Tennis</ModalidadeQuadra>

@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { OrganizacaoType } from 'models/organizacao.interface';
+import { QuadraType } from 'models/quadra.interface';
 
 const instance = axios.create({
  baseURL: 'http://localhost:8080',
@@ -17,11 +18,21 @@ const requests = {
 };
 
 export const Organizacao = {
-	getPosts: (): Promise<OrganizacaoType[]> => requests.get('organizacoes'),
-	getAPost: (id: number): Promise<OrganizacaoType> => requests.get(`org/${id}`),
-	// createPost: (post: OrganizacaoType): Promise<OrganizacaoType> =>
+	getOrgs: (): Promise<OrganizacaoType[]> => requests.get('organizacoes'),
+	getOrg: (id: number): Promise<OrganizacaoType> => requests.get(`org/${id}`),
+	// createOrg: (post: OrganizacaoType): Promise<OrganizacaoType> =>
 	// 	requests.post('posts', post),
-	// updatePost: (post: OrganizacaoType, id: number): Promise<OrganizacaoType> =>
+	// updateOrg: (post: OrganizacaoType, id: number): Promise<OrganizacaoType> =>
 	// 	requests.put(`posts/${id}`, post),
-	// deletePost: (id: number): Promise<void> => requests.delete(`posts/${id}`),
+	// deleteOrg: (id: number): Promise<void> => requests.delete(`posts/${id}`),
+};
+
+export const QuadraAPI = {
+	getQuadras: (): Promise<QuadraType[]> => requests.get('quadras'),
+	getQuadra: (id: number): Promise<QuadraType> => requests.get(`quadra/${id}`),
+	// creatQuadra: (post: QuadraType): Promise<QuadraType> =>
+	// 	requests.post('posts', post),
+	// updatQuadra: (post: QuadraType, id: number): Promise<QuadraType> =>
+	// 	requests.put(`posts/${id}`, post),
+	// deletQuadra: (id: number): Promise<void> => requests.delete(`posts/${id}`),
 };

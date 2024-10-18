@@ -4,6 +4,10 @@ import Navbar from "../components/Navbar"
 import Title, { TextTitleHorarios } from "../components/Title";
 import Text from "../components/Text";
 import { ButtonPrimary } from "../components/Button";
+import { QuadraType } from "models/quadra.interface";
+import { useState, useEffect } from "react";
+import { QuadraAPI } from "../api";
+import { useLocation } from "react-router-dom";
 
 export const SectionQuadra = styled.section`
     width: 100%;
@@ -109,51 +113,74 @@ export const Horario = styled.div`
 `;
 
 export const Quadra = () => {
+    const [quadra, setQuadra] = useState<QuadraType | undefined>(undefined);
+    const [isError, setIsError] = useState<boolean>(false);
+
+    const location = useLocation();
+    const { id } = location.state as { id: number }
+
+    useEffect(() => {
+        QuadraAPI.getQuadra(id)
+            .then((data) => {
+                setQuadra(data)
+                console.log(data)
+            })
+            .catch((err) => {
+                setIsError(true)
+                console.log("erro")
+            });
+        return () => { };
+    }, []);
+
     return (
         <>
             <Navbar />
-            <SectionQuadra>
-                <Title> Quadra Z</Title>
-                <BoxQuadra>
-                    <BoxLeft>
-                        <BoxDia>
-                            <TextTitleHorarios>Passo 1:</TextTitleHorarios>
-                            <BoxInfos>
-                            <Text color="#000" fontSize="20px">Selecione o Dia</Text>
-                            <Text color="#000" fontSize="20px">Dia</Text>
-                            </BoxInfos>
-                        </BoxDia>
-                        <BoxAluguel>
-                            <BoxInfos bg="#84a09b42">
-                                <Text color="#000" fontSize="20px">Valor da Locação</Text>
-                                <Text color="#000" fontSize="20px">Valor Total</Text>
-                            </BoxInfos>
-                            <ButtonPrimary>Alugar</ButtonPrimary>
-                        </BoxAluguel>
-                    </BoxLeft>
-                    <BoxRight>
-                        <TextTitleHorarios>Passo 2: Selecione o(s) Horário(s)</TextTitleHorarios>
-                        <BoxHorarios>
-                            <SubBoxHorarios>
-                                <BoxHorario>
-                                    <HorarioCheck></HorarioCheck>
-                                    <Horario></Horario>
-                                </BoxHorario>
-                                <BoxHorario>
-                                    <HorarioCheck></HorarioCheck>
-                                    <Horario></Horario>
-                                </BoxHorario>
-                            </SubBoxHorarios>
-                            <SubBoxHorarios>
-                                <BoxHorario>
-                                    <HorarioCheck></HorarioCheck>
-                                    <Horario></Horario>
-                                </BoxHorario>
-                            </SubBoxHorarios>
-                        </BoxHorarios>
-                    </BoxRight>
-                </BoxQuadra>
-            </SectionQuadra>
+            {quadra ? (
+                <SectionQuadra>
+                    <Title> {quadra.nome} </Title>
+                    <BoxQuadra>
+                        <BoxLeft>
+                            <BoxDia>
+                                <TextTitleHorarios>Passo 1:</TextTitleHorarios>
+                                <BoxInfos>
+                                    <Text color="#000" fontSize="20px">Selecione o Dia</Text>
+                                    <Text color="#000" fontSize="20px">Dia</Text>
+                                </BoxInfos>
+                            </BoxDia>
+                            <BoxAluguel>
+                                <BoxInfos bg="#84a09b42">
+                                    <Text color="#000" fontSize="20px">Valor da Locação</Text>
+                                    <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
+                                    <Text color="#000" fontSize="20px">Valor Total</Text>
+                                    <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
+                                </BoxInfos>
+                                <ButtonPrimary>Alugar</ButtonPrimary>
+                            </BoxAluguel>
+                        </BoxLeft>
+                        <BoxRight>
+                            <TextTitleHorarios>Passo 2: Selecione o(s) Horário(s)</TextTitleHorarios>
+                            <BoxHorarios>
+                                <SubBoxHorarios>
+                                    <BoxHorario>
+                                        <HorarioCheck></HorarioCheck>
+                                        <Horario></Horario>
+                                    </BoxHorario>
+                                    <BoxHorario>
+                                        <HorarioCheck></HorarioCheck>
+                                        <Horario></Horario>
+                                    </BoxHorario>
+                                </SubBoxHorarios>
+                                <SubBoxHorarios>
+                                    <BoxHorario>
+                                        <HorarioCheck></HorarioCheck>
+                                        <Horario></Horario>
+                                    </BoxHorario>
+                                </SubBoxHorarios>
+                            </BoxHorarios>
+                        </BoxRight>
+                    </BoxQuadra>
+                </SectionQuadra>
+            ) : (<p>Erro</p>)}
             <Footer />
         </>
     )

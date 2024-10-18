@@ -52,16 +52,18 @@ export const ModalidadeOrg = styled.div`
     border: 2px solid #89ae29;
 `;
 
-export default function OrgCard() {
+export default function OrgCard({organizacao}:{organizacao:any}) {
     const navigate = useNavigate();
     const goQuadras = () => navigate("/quadras");
     
     return (
         <BoxOrg onClick={goQuadras}>
-            <LogoOrg></LogoOrg>
+            <LogoOrg>
+                {organizacao.logo_path}
+            </LogoOrg>
             <BoxInfoOrg>
                 <NomeOrg>
-                    ORG X
+                    {organizacao.nome}
                 </NomeOrg>
                 <ModalidadesOrg>
                     <ModalidadeOrg>Volei</ModalidadeOrg>

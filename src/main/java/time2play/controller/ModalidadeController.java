@@ -1,6 +1,7 @@
 package time2play.controller;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import time2play.entities.Modalidade;
@@ -8,6 +9,7 @@ import time2play.interfaces.ModalidadeRepository;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @Service
 @RestController
 public class ModalidadeController {

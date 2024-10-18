@@ -1,5 +1,6 @@
 import { List } from "lodash";
 import { OrganizacaoType } from "./organizacao.interface";
+import { ModalidadeType } from "./modalidade.interface";
 
 export interface QuadraType {
 	id?: number;
@@ -7,7 +8,7 @@ export interface QuadraType {
 	status: string;
 	endereco: string;
 	organizacao: OrganizacaoType;
-	// modalidades: List<>;
+	modalidades: [ModalidadeType];
 	valor: number;
     quadras: List<QuadraType>;
 }

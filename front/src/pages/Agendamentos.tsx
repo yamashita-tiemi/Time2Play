@@ -21,7 +21,7 @@ export const Agendamentos = () => {
     const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
-        Organizacao.getPosts()
+        Organizacao.getOrgs()
             .then((data) => {
                 setOrgs(data);
                 console.log(data)
@@ -32,7 +32,6 @@ export const Agendamentos = () => {
         return () => { };
     }, []);
 
-
     return (
         <>
             <Navbar />
@@ -40,10 +39,9 @@ export const Agendamentos = () => {
                 <Title>Agendamento</Title>
                 <Filter></Filter>
                 <Orgs>
-                    <OrgCard></OrgCard>
-                    <OrgCard></OrgCard>
-                    <OrgCard></OrgCard>
-                    <OrgCard></OrgCard>
+                    {orgs.map((org) => (
+                        <OrgCard organizacao={org} ></OrgCard>
+                    ))}
                 </Orgs>
             </SecionPrimary>
             <Footer />
