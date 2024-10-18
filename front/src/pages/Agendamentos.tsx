@@ -33,7 +33,6 @@ export const Agendamentos = () => {
 
     return (
         <>
-            <Navbar />
             <SecionPrimary>
                 <Title>Agendamento</Title>
                 <Filter></Filter>
@@ -43,7 +42,6 @@ export const Agendamentos = () => {
                     ))}
                 </Orgs>
             </SecionPrimary>
-            <Footer />
         </>
     )
 }

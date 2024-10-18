@@ -16,6 +16,7 @@ export const SectionQuadra = styled.section`
     align-items: center;
     padding: 20px;
     background-color: #E4DED0;
+    min-height: calc(100vh - 120px);
 `;
 
 export const BoxQuadra = styled.section`
@@ -132,7 +133,6 @@ export const Quadra = () => {
 
     return (
         <>
-            <Navbar />
             {quadra ? (
                 <SectionQuadra>
                     <Title> {quadra.nome} </Title>
@@ -179,7 +179,6 @@ export const Quadra = () => {
                     </BoxQuadra>
                 </SectionQuadra>
             ) : (<p>Erro</p>)}
-            <Footer />
         </>
     )
 }

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const SectionHome = styled.section`
     display: flex;
     width: 100%;
-    height: 600px;
+    min-height: calc(100vh - 120px);
     padding: 100px 50px;
     background-color: #E4DED0;
 `;
@@ -40,7 +40,6 @@ export const Home = () => {
 
     return(
         <>
-            <Navbar/>
             <SectionHome>
                 <SectionHomeLeft>
                     <Text>
@@ -57,7 +56,6 @@ export const Home = () => {
                     <TorneioCard/>
                 </SectionHomeRight>
             </SectionHome>
-            <Footer/>
         </>
     )
 }

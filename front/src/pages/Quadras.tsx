@@ -38,7 +38,6 @@ export const Quadras = () => {
 
     return (
         <>
-            <Navbar />
             <SecionPrimary>
                 <Title>Quadras</Title>
                 <Filter></Filter>
@@ -48,7 +47,6 @@ export const Quadras = () => {
                     ))}
                 </QuadrasList>
             </SecionPrimary>
-            <Footer />
         </>
     )
 }

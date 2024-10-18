@@ -10,6 +10,7 @@ export const SectionLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: calc(100vh - 120px);
 `;
 
 export const BoxLogin = styled.div`
@@ -61,7 +62,6 @@ export const Login = () => {
 
     return (
         <>
-            <Navbar />
             <SectionLogin>
                 <BoxLogin>
                     <Borda />
@@ -82,7 +82,6 @@ export const Login = () => {
                     </Box>
                 </BoxLogin>
             </SectionLogin>
-            <Footer />
         </>
     )
 }

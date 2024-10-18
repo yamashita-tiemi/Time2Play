@@ -8,4 +8,13 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
   }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #root {
+    min-height: 100%;
+  }
 `;

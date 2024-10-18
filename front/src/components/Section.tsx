@@ -8,6 +8,7 @@ export const BoxSectionPrimary = styled.section`
     align-items: center;
     padding: 20px;
     background-color: #E4DED0;
+    min-height: calc(100vh - 120px);
 `;
 
 export default function SecionPrimary(
