@@ -8,7 +8,7 @@ import { AgendamentoAPI, QuadraAPI } from "../api";
 import { useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { AgendamentoType } from "models/agendamento.interface";
 
@@ -214,7 +214,6 @@ export const Quadra = () => {
         AgendamentoAPI.getAgendamentos(id)
             .then((data) => {
                 setAgenda(data)
-                console.log("agenda " + data)
 
                 setDateTimeInicio(data.map(item => item.inicio))
                 // setDateTimeFim(data.map(item => item.fim))
@@ -235,8 +234,6 @@ export const Quadra = () => {
         };
     });
 
-    console.log(transformedDatesInicio)
-
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -252,17 +249,15 @@ export const Quadra = () => {
         verificarHoras();
     }, [selectedDate]);
 
-    const verificarHoras = () => {
-        const formattedSelectedDate = format(selectedDate, 'dd-MM-yyyy')
+    const formattedSelectedDate = format(selectedDate, 'dd-MM-yyyy')
 
+    const verificarHoras = () => {
         const horas = transformedDatesInicio
             .filter(dateInicio => dateInicio.data === formattedSelectedDate)
             .map(dateInicio => parseInt(dateInicio.hora.split(':')[0]));
 
         setHorasIndisponiveis(horas);
     };
-
-    console.log("horas " + horasIndisponiveis)
         
     const [selectedHours, setSelectedHours] = useState<number[]>([]);
 
@@ -274,6 +269,15 @@ export const Quadra = () => {
         }
     }
 
+    const sendObject = (id: number, formattedSelectedDate: string, selectedHours: number[]) => {
+        const dateTime = parse(formattedSelectedDate, 'dd-MM-yyyy', new Date());
+        dateTime.setHours(selectedHours[0])
+        const objectAgendamento = {
+            quadra_id: id,
+            dateTime: format(dateTime, "yyyy-MM-dd'T'HH:mm:ss"),
+            numeroHoras: selectedHours.length
+        }
+    }
 
     return (
         <>
@@ -313,7 +317,7 @@ export const Quadra = () => {
                                         <Text color="#000" fontSize="22px">R$ {quadra.valor * selectedHours.length}</Text>
                                     </BoxValor>
                                 </BoxValores>
-                                <ButtonPrimary>Alugar</ButtonPrimary>
+                                <ButtonPrimary onClick={() => sendObject(id,formattedSelectedDate,selectedHours)}>Alugar</ButtonPrimary>
                             </BoxAluguel>
                         </BoxLeft>
                         <BoxRight>

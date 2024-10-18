@@ -1,13 +1,13 @@
 package time2play.controller;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import time2play.entities.Agendamento;
+import time2play.entities.Quadra;
 import time2play.interfaces.AgendamentoRepository;
+import time2play.interfaces.QuadraRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8081")
@@ -15,9 +15,12 @@ import java.util.List;
 @RestController
 public class AgendamentoController {
     private final AgendamentoRepository repository;
+    private final QuadraRepository quadraRepository;
 
-    public AgendamentoController(AgendamentoRepository repository){
+    public AgendamentoController(AgendamentoRepository repository, QuadraRepository quadraRepository){
+
         this.repository = repository;
+        this.quadraRepository = quadraRepository;
     }
 
     @GetMapping("/agendamentos")
@@ -28,5 +31,12 @@ public class AgendamentoController {
     @GetMapping(path = {"/agendamentos/{id_quadra}"})
     List<Agendamento> findByQuadra(@PathVariable long id_quadra) {
         return (List<Agendamento>) repository.findAllByQuadraIdIs(id_quadra);
+    }
+
+    @PostMapping("/agendamentos/create")
+    Agendamento createNew(@RequestBody Agendamento agendamento) {
+        Agendamento newAgendamento = new Agendamento(agendamento.getInicio(), agendamento.getFim(), agendamento.getQuadra());
+        repository.save(newAgendamento);
+        return newAgendamento;
     }
 }

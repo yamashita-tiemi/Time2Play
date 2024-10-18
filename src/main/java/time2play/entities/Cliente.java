@@ -15,15 +15,16 @@ public class Cliente extends Usuario {
         super(nome, email, senha, telefone);
     }
 
-    public void realizaAgendamento(Quadra quadra, LocalDateTime inicio, LocalDateTime fim) {
-        if (quadra.verificarDisponibilidade(inicio, fim)) {
-            Agendamento agendamento = new Agendamento(inicio, fim, this, quadra);
-            //add na lista de agendamentos
-        }
-        else {
-            System.out.println("Não foi possivel realizar o agendamento.");
-            //devolver o erro (?)
-        }
+    public void realizaAgendamento(Quadra quadra, LocalDateTime inicio, int numeroHoras) {
+//        if (quadra.verificarDisponibilidade(inicio, fim)) {
+//            Agendamento agendamento = new Agendamento(inicio, numeroHoras, this, quadra);
+//            //add na lista de agendamentos
+//        }
+//        else {
+//            System.out.println("Não foi possivel realizar o agendamento.");
+//            //devolver o erro (?)
+//        }
+//        Agendamento agendamento = new Agendamento(inicio, numeroHoras, quadra);
     }
 }
 

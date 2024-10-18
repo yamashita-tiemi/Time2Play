@@ -24,12 +24,9 @@ public class Agendamento {
 
     public Agendamento() {}
 
-    public Agendamento(LocalDateTime inicio, LocalDateTime fim, Cliente cliente, Quadra quadra) {
-        //verificar como faz pra ser autoincremento
-//        this.id = id;
+    public Agendamento(LocalDateTime inicio, LocalDateTime fim, Quadra quadra) {
         setInicio(inicio);
         setFim(fim);
-        setCliente(cliente);
         setQuadra(quadra);
     }
 
@@ -45,7 +42,6 @@ public class Agendamento {
     public void setInicio(LocalDateTime inicio) {
         this.inicio = inicio;
     }
-
     public LocalDateTime getFim() {
         return fim;
     }

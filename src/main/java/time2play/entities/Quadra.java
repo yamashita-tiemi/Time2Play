@@ -84,17 +84,17 @@ public class Quadra {
         this.status = status;
     }
 
-    public boolean verificarDisponibilidade(LocalDateTime inicio, LocalDateTime fim) {
-        if (this.status == INDISPONIVEL) {
-            return false;
-        }
-//        for (Agendamento agendamento : this.agendamentos) {
-//            // Verifica se sobrepõem
-//            if (!(fim.isBefore(agendamento.getInicio()) || inicio.isAfter(agendamento.getFim()))) {
-//                return false;
-//            }
+//    public boolean verificarDisponibilidade(LocalDateTime inicio, LocalDateTime fim) {
+//        if (this.status == INDISPONIVEL) {
+//            return false;
 //        }
-        return true;
-    }
+////        for (Agendamento agendamento : this.agendamentos) {
+////            // Verifica se sobrepõem
+////            if (!(fim.isBefore(agendamento.getInicio()) || inicio.isAfter(agendamento.getFim()))) {
+////                return false;
+////            }
+////        }
+//        return true;
+//    }
 }
 
