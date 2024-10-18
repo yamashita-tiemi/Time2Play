@@ -135,25 +135,25 @@
     <!--                </insert>-->
 
 
-    <!--                <insert tableName="Agendamento">-->
-    <!--                        <column name="inicio" value="2024-10-10T14:00:00"/>-->
-    <!--                        <column name="fim" value="2024-10-10T15:00:00"/>-->
-    <!--                        <column name="cliente_id" value="1"/>-->
-    <!--                        <column name="quadra_id" value="1"/>-->
-    <!--                </insert>-->
+                    <insert tableName="Agendamento">
+                            <column name="inicio" value="2024-10-21T14:00:00"/>
+                            <column name="fim" value="2024-10-21T15:00:00"/>
+<!--                            <column name="cliente_id" value="1"/>-->
+                            <column name="quadra_id" value="1"/>
+                    </insert>
 
-    <!--                <insert tableName="Agendamento">-->
-    <!--                        <column name="inicio" value="2024-10-11T17:00:00"/>-->
-    <!--                        <column name="fim" value="2024-10-11T18:00:00"/>-->
-    <!--                        <column name="cliente_id" value="2"/>-->
-    <!--                        <column name="quadra_id" value="1"/>-->
-    <!--                </insert>-->
+                    <insert tableName="Agendamento">
+                            <column name="inicio" value="2024-10-21T17:00:00"/>
+                            <column name="fim" value="2024-10-21T18:00:00"/>
+<!--                            <column name="cliente_id" value="2"/>-->
+                            <column name="quadra_id" value="1"/>
+                    </insert>
 
-    <!--                <insert tableName="Agendamento">-->
-    <!--                        <column name="inicio" value="2024-10-12T10:00:00"/>-->
-    <!--                        <column name="fim" value="2024-10-12T11:30:00"/>-->
-    <!--                        <column name="cliente_id" value="3"/>-->
-    <!--                        <column name="quadra_id" value="3"/>-->
-    <!--                </insert>-->
+                    <insert tableName="Agendamento">
+                            <column name="inicio" value="2024-10-22T10:00:00"/>
+                            <column name="fim" value="2024-10-22T11:30:00"/>
+<!--                            <column name="cliente_id" value="3"/>-->
+                            <column name="quadra_id" value="3"/>
+                    </insert>
     </changeSet>
 </databaseChangeLog>

@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { AgendamentoType } from 'models/agendamento.interface';
 import { OrganizacaoType } from 'models/organizacao.interface';
 import { QuadraType } from 'models/quadra.interface';
 
@@ -35,4 +36,14 @@ export const QuadraAPI = {
 	// updatQuadra: (post: QuadraType, id: number): Promise<QuadraType> =>
 	// 	requests.put(`posts/${id}`, post),
 	// deletQuadra: (id: number): Promise<void> => requests.delete(`posts/${id}`),
+};
+
+export const AgendamentoAPI = {
+	getAgendamentos: (id_quadra: number): Promise<AgendamentoType[]> => requests.get(`agendamentos/${id_quadra}`),
+	getAgendamento: (id: number): Promise<AgendamentoType> => requests.get(`agendamento/${id}`),
+	// creatAgendamento: (post: AgendamentoType): Promise<AgendamentoType> =>
+	// 	requests.post('posts', post),
+	// updatAgendamento: (post: AgendamentoType, id: number): Promise<AgendamentoType> =>
+	// 	requests.put(`posts/${id}`, post),
+	// deletAgendamento: (id: number): Promise<void> => requests.delete(`posts/${id}`),
 };

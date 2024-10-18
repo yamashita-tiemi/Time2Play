@@ -4,12 +4,13 @@ import Text from "../components/Text";
 import { ButtonPrimary } from "../components/Button";
 import { QuadraType } from "models/quadra.interface";
 import { useState, useEffect, forwardRef } from "react";
-import { QuadraAPI } from "../api";
+import { AgendamentoAPI, QuadraAPI } from "../api";
 import { useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { AgendamentoType } from "models/agendamento.interface";
 
 export const SectionQuadra = styled.section`
     width: 100%;
@@ -90,7 +91,7 @@ export const BoxValor = styled.div`
 `;
 
 export const BoxValorMultiplicado = styled.div`
-    width: 20%;
+    width: 12%;
     height: 30%;
     display: flex;
     justify-content: space-between;
@@ -122,11 +123,12 @@ export const SubBoxHorarios = styled.div`
     align-items: flex-start;
 `;
 
-export const BoxHorario = styled.div`
+export const BoxHorario = styled.div<{ isAvailable: boolean }>`
     width: 100%;
     height: 10%;
     display: flex;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
+    opacity: ${({ isAvailable }) => (isAvailable ? 0.5 : 1)};
 `;
 
 export const HorarioCheck = styled.div`
@@ -134,6 +136,28 @@ export const HorarioCheck = styled.div`
     width: 15%;
     height: 100%;
     border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+
+    label {
+        padding-left: 30px;
+        cursor: pointer;
+    }
+`;
+
+const Check = styled.input`
+    width: 35%;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &:checked {
+        background-color: #89AE29;
+        border-color: #fff;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 `;
 
 export const Horario = styled.div`
@@ -141,6 +165,10 @@ export const Horario = styled.div`
     width: 85%;
     height: 100%;
     border-radius: 0 10px 10px 0;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -163,6 +191,7 @@ const DivDate = styled.div`
 export const Quadra = () => {
     const [quadra, setQuadra] = useState<QuadraType | undefined>(undefined);
     const [isError, setIsError] = useState<boolean>(false);
+    const [agenda, setAgenda] = useState<AgendamentoType[]>([]);
 
     const location = useLocation();
     const { id } = location.state as { id: number }
@@ -178,11 +207,73 @@ export const Quadra = () => {
         return () => { };
     }, []);
 
+    const [dateTimeInicio, setDateTimeInicio] = useState([])
+    // const [dateTimeFim, setDateTimeFim] = useState([])
+
+    useEffect(() => {
+        AgendamentoAPI.getAgendamentos(id)
+            .then((data) => {
+                setAgenda(data)
+                console.log("agenda " + data)
+
+                setDateTimeInicio(data.map(item => item.inicio))
+                // setDateTimeFim(data.map(item => item.fim))
+            })
+            .catch((err) => {
+                setIsError(true)
+            });
+        return () => { };
+    }, []);
+
+    const transformedDatesInicio = dateTimeInicio.map(dateString => {
+        const date = new Date(dateString);
+        const formattedDate = format(date, 'dd-MM-yyyy')
+        const formattedHour = format(date, 'HH:mm:ss')
+        return {
+            data: formattedDate,
+            hora: formattedHour
+        };
+    });
+
+    console.log(transformedDatesInicio)
+
+
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleDateChange = (date: Date | null) => {
-        setSelectedDate(date);
+        if (date) {
+            setSelectedDate(date);
+        }
     };
+
+    const [horasIndisponiveis, setHorasIndisponiveis] = useState([]);
+
+    useEffect(() => {
+        verificarHoras();
+    }, [selectedDate]);
+
+    const verificarHoras = () => {
+        const formattedSelectedDate = format(selectedDate, 'dd-MM-yyyy')
+
+        const horas = transformedDatesInicio
+            .filter(dateInicio => dateInicio.data === formattedSelectedDate)
+            .map(dateInicio => parseInt(dateInicio.hora.split(':')[0]));
+
+        setHorasIndisponiveis(horas);
+    };
+
+    console.log("horas " + horasIndisponiveis)
+        
+    const [selectedHours, setSelectedHours] = useState<number[]>([]);
+
+    const handleCheckboxChange = (hour: number) => {
+        if (selectedHours.includes(hour)) {
+            setSelectedHours(selectedHours.filter(h => h !== hour))
+        } else {
+            setSelectedHours([...selectedHours, hour])
+        }
+    }
+
 
     return (
         <>
@@ -210,16 +301,16 @@ export const Quadra = () => {
                             <BoxAluguel>
                                 <BoxValores bg="#84a09b42">
                                     <BoxValor>
-                                        <Text color="#000" fontSize="20px">Valor por Hora</Text>
-                                        <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
+                                        <Text color="#000" fontSize="18px">Valor por Hora</Text>
+                                        <Text color="#000" fontSize="18px">R$ {quadra.valor}</Text>
                                     </BoxValor>
                                     <BoxValorMultiplicado>
-                                        <Text color="#000" fontSize="12px">X</Text>
-                                        <Text color="#000" fontSize="12px">01</Text>
+                                        <Text color="#000" fontSize="14px">X</Text>
+                                        <Text color="#000" fontSize="14px">{selectedHours.length}</Text>
                                     </BoxValorMultiplicado>
                                     <BoxValor>
-                                        <Text color="#000" fontSize="20px">Valor Total</Text>
-                                        <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
+                                        <Text color="#000" fontSize="22px">Valor Total</Text>
+                                        <Text color="#000" fontSize="22px">R$ {quadra.valor * selectedHours.length}</Text>
                                     </BoxValor>
                                 </BoxValores>
                                 <ButtonPrimary>Alugar</ButtonPrimary>
@@ -229,20 +320,40 @@ export const Quadra = () => {
                             <TextTitleHorarios>Passo 2: Selecione o(s) Horário(s)</TextTitleHorarios>
                             <BoxHorarios>
                                 <SubBoxHorarios>
-                                    <BoxHorario>
-                                        <HorarioCheck></HorarioCheck>
-                                        <Horario></Horario>
-                                    </BoxHorario>
-                                    <BoxHorario>
-                                        <HorarioCheck></HorarioCheck>
-                                        <Horario></Horario>
-                                    </BoxHorario>
+                                    {Array.from({ length: 7 }, (_, i) => 8 + i).map(hour => (
+                                        <BoxHorario isAvailable={horasIndisponiveis.includes(hour)}>
+                                            <HorarioCheck>
+                                                <Check
+                                                    type="checkbox"
+                                                    id={`hour-${hour}`}
+                                                    checked={selectedHours.includes(hour)}
+                                                    onChange={() => handleCheckboxChange(hour)}
+                                                    disabled={horasIndisponiveis.includes(hour)}
+                                                />
+                                            </HorarioCheck>
+                                            <Horario>
+                                                {hour}:00 - {hour + 1}:00
+                                            </Horario>
+                                        </BoxHorario>
+                                    ))}
                                 </SubBoxHorarios>
                                 <SubBoxHorarios>
-                                    <BoxHorario>
-                                        <HorarioCheck></HorarioCheck>
-                                        <Horario></Horario>
-                                    </BoxHorario>
+                                    {Array.from({ length: 7 }, (_, i) => 15 + i).map(hour => (
+                                        <BoxHorario isAvailable={horasIndisponiveis.includes(hour)}>
+                                            <HorarioCheck>
+                                                <Check
+                                                    type="checkbox"
+                                                    id={`hour-${hour}`}
+                                                    checked={selectedHours.includes(hour)}
+                                                    onChange={() => handleCheckboxChange(hour)}
+                                                    disabled={horasIndisponiveis.includes(hour)}
+                                                />
+                                            </HorarioCheck>
+                                            <Horario>
+                                                {hour}:00 - {hour + 1}:00
+                                            </Horario>
+                                        </BoxHorario>
+                                    ))}
                                 </SubBoxHorarios>
                             </BoxHorarios>
                         </BoxRight>
