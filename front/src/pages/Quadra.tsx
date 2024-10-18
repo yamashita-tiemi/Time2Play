@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
-import Footer from "../components/Footer"
-import Navbar from "../components/Navbar"
 import Title, { TextTitleHorarios } from "../components/Title";
 import Text from "../components/Text";
 import { ButtonPrimary } from "../components/Button";
 import { QuadraType } from "models/quadra.interface";
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import { QuadraAPI } from "../api";
 import { useLocation } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 export const SectionQuadra = styled.section`
     width: 100%;
@@ -58,13 +60,41 @@ export const BoxInfos = styled.div<{ bg?: string }>`
     width: 100%;
     height: 50%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     background-color: ${(props) => props.bg || '#4da999a1'};
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
     margin: 5% 0;
+`;
+
+export const BoxValores = styled.div<{ bg?: string }>`
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: ${(props) => props.bg || '#4da999a1'};
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5% 0;
+`;
+
+export const BoxValor = styled.div`
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const BoxValorMultiplicado = styled.div`
+    width: 20%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const BoxRight = styled.section`
@@ -113,6 +143,23 @@ export const Horario = styled.div`
     border-radius: 0 10px 10px 0;
 `;
 
+const StyledDatePicker = styled(DatePicker)`
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid #84a09b42;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  &:focus {
+    border-color: #2F5D55;
+    outline: none;
+  }
+`;
+
+const DivDate = styled.div`
+    width: 35%;
+`;
+
 export const Quadra = () => {
     const [quadra, setQuadra] = useState<QuadraType | undefined>(undefined);
     const [isError, setIsError] = useState<boolean>(false);
@@ -131,6 +178,12 @@ export const Quadra = () => {
         return () => { };
     }, []);
 
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleDateChange = (date: Date | null) => {
+        setSelectedDate(date);
+    };
+
     return (
         <>
             {quadra ? (
@@ -142,16 +195,33 @@ export const Quadra = () => {
                                 <TextTitleHorarios>Passo 1:</TextTitleHorarios>
                                 <BoxInfos>
                                     <Text color="#000" fontSize="20px">Selecione o Dia</Text>
-                                    <Text color="#000" fontSize="20px">Dia</Text>
+                                    <DivDate>
+                                        <StyledDatePicker
+                                            selected={selectedDate}
+                                            onChange={handleDateChange}
+                                            dateFormat="dd/MM/yyyy"
+                                            placeholderText="Selecione a data"
+                                            locale={ptBR}
+                                            showPopperArrow={false}
+                                        />
+                                    </DivDate>
                                 </BoxInfos>
                             </BoxDia>
                             <BoxAluguel>
-                                <BoxInfos bg="#84a09b42">
-                                    <Text color="#000" fontSize="20px">Valor da Locação</Text>
-                                    <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
-                                    <Text color="#000" fontSize="20px">Valor Total</Text>
-                                    <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
-                                </BoxInfos>
+                                <BoxValores bg="#84a09b42">
+                                    <BoxValor>
+                                        <Text color="#000" fontSize="20px">Valor por Hora</Text>
+                                        <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
+                                    </BoxValor>
+                                    <BoxValorMultiplicado>
+                                        <Text color="#000" fontSize="12px">X</Text>
+                                        <Text color="#000" fontSize="12px">01</Text>
+                                    </BoxValorMultiplicado>
+                                    <BoxValor>
+                                        <Text color="#000" fontSize="20px">Valor Total</Text>
+                                        <Text color="#000" fontSize="20px">R$ {quadra.valor}</Text>
+                                    </BoxValor>
+                                </BoxValores>
                                 <ButtonPrimary>Alugar</ButtonPrimary>
                             </BoxAluguel>
                         </BoxLeft>
