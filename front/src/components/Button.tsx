@@ -40,7 +40,7 @@ export const ButtonPrimary:React.FC<ButtonProps> = props => {
     )
 }
 
-export const BoxButtonQuadra = styled.button`
+export const BoxButtonQuadra = styled.button<{ color?: string;}>`
     width: 40%;
     height: 40px;
     background-color: #89AE29;
@@ -49,7 +49,7 @@ export const BoxButtonQuadra = styled.button`
     justify-content: center;
     align-items:center;
     margin-right: 10px;
-    color: #E4DED0;
+    color: ${(props) => props.color || '#E4DED0'};
     box-shadow: 10px 10px 18px -7px rgba(0,0,0,0.8);
     -webkit-box-shadow: 10px 10px 18px -7px rgba(0,0,0,0.8);
     -moz-box-shadow: 10px 10px 18px -7px rgba(0,0,0,0.8);

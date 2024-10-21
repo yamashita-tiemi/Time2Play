@@ -38,22 +38,25 @@ export const Home = () => {
     const navigate = useNavigate();
     const goAgendamentos = () => navigate("/agendamentos");
 
-    return(
+    return (
         <>
             <SectionHome>
                 <SectionHomeLeft>
                     <Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Descubra a facilidade de agendar suas horas de lazer em nossas quadras! 
                     </Text>
                     <Text>
-                        Phasellus rutrum urna eget semper placerat. 
+                        Com apenas alguns cliques, você pode garantir seu espaço e aproveitar momentos incríveis com amigos e familiares.
+                    </Text>
+                    <Text>
+                        Reserve agora e venha jogar!
                     </Text>
                     <ButtonPrimary onClick={goAgendamentos}>
                         Agendar
                     </ButtonPrimary>
                 </SectionHomeLeft>
                 <SectionHomeRight>
-                    <TorneioCard/>
+                    <TorneioCard />
                 </SectionHomeRight>
             </SectionHome>
         </>
