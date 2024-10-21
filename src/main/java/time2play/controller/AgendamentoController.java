@@ -1,5 +1,7 @@
 package time2play.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import time2play.entities.Agendamento;
@@ -9,6 +11,7 @@ import time2play.interfaces.QuadraRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @Service
@@ -42,6 +45,18 @@ public class AgendamentoController {
         Agendamento newAgendamento = new Agendamento(request.getInicio(), request.getFim(), quadra);
         repository.save(newAgendamento);
         return newAgendamento;
+    }
+
+    @DeleteMapping("/agendamentos/delete/{id}")
+    public ResponseEntity<String> deleteAgendamento(@PathVariable Long id) {
+        Optional<Agendamento> agendamentoOpt = repository.findById(id);
+
+        if (agendamentoOpt.isPresent()) {
+            repository.deleteById(id);
+            return ResponseEntity.ok("Agendamento deletado com sucesso.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Agendamento não encontrado.");
+        }
     }
 }
 
