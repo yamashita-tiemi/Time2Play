@@ -191,7 +191,6 @@ const DivDate = styled.div`
 export const Quadra = () => {
     const [quadra, setQuadra] = useState<QuadraType | undefined>(undefined);
     const [isError, setIsError] = useState<boolean>(false);
-    const [agenda, setAgenda] = useState<AgendamentoType[]>([]);
 
     const location = useLocation();
     const { id } = location.state as { id: number }
@@ -207,58 +206,52 @@ export const Quadra = () => {
         return () => { };
     }, []);
 
-    const [dateTimeInicio, setDateTimeInicio] = useState([])
-    // const [dateTimeFim, setDateTimeFim] = useState([])
+    const [transformedDatesInicio, setTransformedDatesInicio] = useState([])
 
     useEffect(() => {
         AgendamentoAPI.getAgendamentos(id)
             .then((data) => {
-                setAgenda(data)
-
-                setDateTimeInicio(data.map(item => item.inicio))
-                // setDateTimeFim(data.map(item => item.fim))
+                setTransformedDatesInicio(
+                    data.map(item => item.inicio).map(dateString => {
+                    const date = new Date(dateString);
+                    return {
+                        data: format(date, 'dd-MM-yyyy'),
+                        hora: format(date, 'HH:mm:ss')
+                    };
+                }))
+                
             })
             .catch((err) => {
                 setIsError(true)
-            });
-        return () => { };
-    }, []);
-
-    const transformedDatesInicio = dateTimeInicio.map(dateString => {
-        const date = new Date(dateString);
-        const formattedDate = format(date, 'dd-MM-yyyy')
-        const formattedHour = format(date, 'HH:mm:ss')
-        return {
-            data: formattedDate,
-            hora: formattedHour
-        };
-    });
-
+            })   
+        return () => { }
+    }, [])
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleDateChange = (date: Date | null) => {
         if (date) {
-            setSelectedDate(date);
+            setSelectedDate(date)
         }
-    };
-
-    const [horasIndisponiveis, setHorasIndisponiveis] = useState([]);
-
-    useEffect(() => {
-        verificarHoras();
-    }, [selectedDate]);
+    }
 
     const formattedSelectedDate = format(selectedDate, 'dd-MM-yyyy')
+    const [horasIndisponiveis, setHorasIndisponiveis] = useState([])
 
     const verificarHoras = () => {
         const horas = transformedDatesInicio
-            .filter(dateInicio => dateInicio.data === formattedSelectedDate)
-            .map(dateInicio => parseInt(dateInicio.hora.split(':')[0]));
-
+        .filter(dateInicio => dateInicio.data === formattedSelectedDate)
+        .map(dateInicio => parseInt(dateInicio.hora.split(':')[0]))
+        
         setHorasIndisponiveis(horas);
     };
-        
+
+    useEffect(() => {
+        if (transformedDatesInicio && transformedDatesInicio.length) {
+            verificarHoras()
+        }
+    }, [transformedDatesInicio, selectedDate])
+
     const [selectedHours, setSelectedHours] = useState<number[]>([]);
 
     const handleCheckboxChange = (hour: number) => {
@@ -270,15 +263,15 @@ export const Quadra = () => {
     }
 
     const sendObject = async (id: number, formattedSelectedDate: string, selectedHours: number[]) => {
-        const dateTime = parse(formattedSelectedDate, 'dd-MM-yyyy', new Date())
-        dateTime.setHours(selectedHours[0])
+        const inicio = parse(formattedSelectedDate, 'dd-MM-yyyy', new Date())
+        inicio.setHours(selectedHours[0])
 
-        const fim = new Date(dateTime)
-        fim.setHours(dateTime.getHours() + selectedHours.length)
+        const fim = new Date(inicio)
+        fim.setHours(inicio.getHours() + selectedHours.length)
 
         const objectAgendamento: AgendamentoTypePost = {
             quadraId: id,
-            inicio: format(dateTime, "yyyy-MM-dd'T'HH:mm:ss"),
+            inicio: format(inicio, "yyyy-MM-dd'T'HH:mm:ss"),
             fim: format(fim, "yyyy-MM-dd'T'HH:mm:ss")
         }
 
@@ -328,7 +321,7 @@ export const Quadra = () => {
                                         <Text color="#000" fontSize="22px">R$ {quadra.valor * selectedHours.length}</Text>
                                     </BoxValor>
                                 </BoxValores>
-                                <ButtonPrimary onClick={() => sendObject(id,formattedSelectedDate,selectedHours)}>Alugar</ButtonPrimary>
+                                <ButtonPrimary onClick={() => sendObject(id, formattedSelectedDate, selectedHours)}>Alugar</ButtonPrimary>
                             </BoxAluguel>
                         </BoxLeft>
                         <BoxRight>
