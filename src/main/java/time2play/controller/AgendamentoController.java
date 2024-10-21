@@ -34,9 +34,43 @@ public class AgendamentoController {
     }
 
     @PostMapping("/agendamentos/create")
-    Agendamento createNew(@RequestBody Agendamento agendamento) {
-        Agendamento newAgendamento = new Agendamento(agendamento.getInicio(), agendamento.getFim(), agendamento.getQuadra());
+    Agendamento createAgendamento(@RequestBody AgendamentoRequest request) {
+        Quadra quadra = quadraRepository.findByid(request.getQuadraId());
+        if (quadra == null) {
+            throw new IllegalArgumentException("Quadra não encontrada com o ID: " + request.getQuadraId());
+        }
+        Agendamento newAgendamento = new Agendamento(request.getInicio(), request.getFim(), quadra);
         repository.save(newAgendamento);
         return newAgendamento;
+    }
+}
+
+class AgendamentoRequest {
+    private LocalDateTime inicio;
+    private LocalDateTime fim;
+    private long quadraId;
+
+    public LocalDateTime getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(LocalDateTime inicio) {
+        this.inicio = inicio;
+    }
+
+    public LocalDateTime getFim() {
+        return fim;
+    }
+
+    public void setFim(LocalDateTime fim) {
+        this.fim = fim;
+    }
+
+    public long getQuadraId() {
+        return quadraId;
+    }
+
+    public void setQuadraId(long quadraId) {
+        this.quadraId = quadraId;
     }
 }
