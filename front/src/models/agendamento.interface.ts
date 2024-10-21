@@ -9,3 +9,9 @@ export interface AgendamentoType {
 	numHoras: number;
 	valorTotal: number;
 }
+
+export interface AgendamentoTypePost {
+	quadraId: number;
+	inicio: string;
+	fim: string;
+}

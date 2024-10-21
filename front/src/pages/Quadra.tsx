@@ -10,7 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, parse } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { AgendamentoType } from "models/agendamento.interface";
+import { AgendamentoType, AgendamentoTypePost } from "../models/agendamento.interface";
 
 export const SectionQuadra = styled.section`
     width: 100%;
@@ -269,13 +269,24 @@ export const Quadra = () => {
         }
     }
 
-    const sendObject = (id: number, formattedSelectedDate: string, selectedHours: number[]) => {
-        const dateTime = parse(formattedSelectedDate, 'dd-MM-yyyy', new Date());
+    const sendObject = async (id: number, formattedSelectedDate: string, selectedHours: number[]) => {
+        const dateTime = parse(formattedSelectedDate, 'dd-MM-yyyy', new Date())
         dateTime.setHours(selectedHours[0])
-        const objectAgendamento = {
-            quadra_id: id,
-            dateTime: format(dateTime, "yyyy-MM-dd'T'HH:mm:ss"),
-            numeroHoras: selectedHours.length
+
+        const fim = new Date(dateTime)
+        fim.setHours(dateTime.getHours() + selectedHours.length)
+
+        const objectAgendamento: AgendamentoTypePost = {
+            quadraId: id,
+            inicio: format(dateTime, "yyyy-MM-dd'T'HH:mm:ss"),
+            fim: format(fim, "yyyy-MM-dd'T'HH:mm:ss")
+        }
+
+        try {
+            const response = await AgendamentoAPI.creatAgendamento(objectAgendamento);
+            console.log('Agendamento criado com sucesso:');
+        } catch (error) {
+            console.error('Erro ao criar agendamento:', error);
         }
     }
 
