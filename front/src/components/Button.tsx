@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 
-export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, React.AriaAttributes  {}
+export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, React.AriaAttributes  {
+    backgroundColor?: string;
+}
 
 export const BoxButtonPrimary = styled.button`
     width: 60%;
@@ -40,8 +42,8 @@ export const ButtonPrimary:React.FC<ButtonProps> = props => {
     )
 }
 
-export const BoxButtonQuadra = styled.button<{ color?: string;}>`
-    width: 40%;
+export const BoxButtonQuadra = styled.button<{ color?: string; width?: string;}>`
+    width: ${(props) => props.width || '40%'};
     height: 40px;
     background-color: #89AE29;
     border-radius: 10px;
@@ -110,5 +112,43 @@ export const ButtonLogin:React.FC<ButtonProps> = props => {
 
     return (
         <BoxButtonLogin {...rest}>{children}</BoxButtonLogin>
+    )
+}
+
+export const BoxButtonAdd = styled.button<{ backgroundColor?: string; }>`
+    width: 15%;
+    height: 35px;
+    background-color: ${(props) => props.backgroundColor || '#89AE29'};
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-right: 10px;
+    margin: 20px 0;
+    color: #FFFF;
+    box-shadow: 8px 8px 12px -5px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 8px 8px 12px -5px rgba(0,0,0,0.8);
+    -moz-box-shadow: 8px 8px 12px -5px rgba(0,0,0,0.8);
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 6px 6px 10px -5px rgba(0,0,0,0.8);
+    }
+
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 6px 6px 10px -5px rgba(0,0,0,0.8);
+    }
+`;
+
+export const ButtonAdd:React.FC<ButtonProps> = props => {
+    const {children, ...rest} = props;
+
+    return (
+        <BoxButtonAdd {...rest}>{children}</BoxButtonAdd>
     )
 }
