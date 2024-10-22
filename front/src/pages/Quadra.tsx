@@ -213,14 +213,25 @@ export const Quadra = () => {
         AgendamentoAPI.getAgendamentos(id)
             .then((data) => {
                 setTransformedDatesInicio(
-                    data.map(item => item.inicio).map(dateString => {
-                    const date = new Date(dateString);
-                    return {
-                        data: format(date, 'dd-MM-yyyy'),
-                        hora: format(date, 'HH:mm:ss')
-                    };
-                }))
+                    data.map(item => {
+                        const dateString = item.inicio;
+                        const date = new Date(dateString);
+                        const hoursCount = item.numeroHoras;
 
+                        const hoursArray = Array.from({ length: hoursCount }, (_, i) => {
+                            const newDate = new Date(date);
+                            newDate.setHours(date.getHours() + i);
+                
+                            return {
+                                data: format(newDate, 'dd-MM-yyyy'),
+                                hora: format(newDate, 'HH:mm:ss'),
+                            };
+                        });
+                    
+                    return hoursArray;
+                //transforma um array de arrays em um único array
+                }).flat() 
+            )
             })
             .catch((err) => {
                 setIsError(true)
@@ -246,7 +257,7 @@ export const Quadra = () => {
         const horas = transformedDatesInicio
         .filter(dateInicio => dateInicio.data === formattedSelectedDate)
         .map(dateInicio => parseInt(dateInicio.hora.split(':')[0]))
-        
+
         setHorasIndisponiveis(horas);
     };
 

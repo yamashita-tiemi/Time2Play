@@ -6,7 +6,7 @@ export interface AgendamentoType {
 	fim: Date;
     cliente: string;
     quadra: QuadraType;
-	numHoras: number;
+	numeroHoras: number;
 	valorTotal: number;
 }
 
