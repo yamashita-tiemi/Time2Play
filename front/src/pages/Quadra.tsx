@@ -5,7 +5,7 @@ import { ButtonPrimary } from "../components/Button";
 import { QuadraType } from "models/quadra.interface";
 import { useState, useEffect, forwardRef } from "react";
 import { AgendamentoAPI, QuadraAPI } from "../api";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, parse } from 'date-fns';
@@ -191,6 +191,7 @@ const DivDate = styled.div`
 export const Quadra = () => {
     const [quadra, setQuadra] = useState<QuadraType | undefined>(undefined);
     const [isError, setIsError] = useState<boolean>(false);
+    const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
     const location = useLocation();
     const { id } = location.state as { id: number }
@@ -219,13 +220,16 @@ export const Quadra = () => {
                         hora: format(date, 'HH:mm:ss')
                     };
                 }))
-                
+
             })
             .catch((err) => {
                 setIsError(true)
-            })   
+            })
+            .finally(() => {
+                setIsSubmitted(false);
+            });
         return () => { }
-    }, [])
+    }, [isSubmitted])
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -254,6 +258,10 @@ export const Quadra = () => {
 
     const [selectedHours, setSelectedHours] = useState<number[]>([]);
 
+    useEffect(() => {
+        setSelectedHours([]);
+    }, [selectedDate]);
+
     const handleCheckboxChange = (hour: number) => {
         if (selectedHours.includes(hour)) {
             setSelectedHours(selectedHours.filter(h => h !== hour))
@@ -277,7 +285,9 @@ export const Quadra = () => {
 
         try {
             const response = await AgendamentoAPI.creatAgendamento(objectAgendamento);
+            verificarHoras()
             console.log('Agendamento criado com sucesso:');
+            setIsSubmitted(true);
         } catch (error) {
             console.error('Erro ao criar agendamento:', error);
         }
