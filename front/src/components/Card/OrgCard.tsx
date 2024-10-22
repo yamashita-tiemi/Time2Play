@@ -1,3 +1,4 @@
+import ImageBox from "../Image";
 import { QuadraAPI } from "../../api";
 import { QuadraType } from "models/quadra.interface";
 import { useState, useEffect } from "react";
@@ -89,9 +90,11 @@ export default function OrgCard({ organizacao }: { organizacao: any }) {
 
     return (
         <BoxOrg onClick={goQuadras}>
-            <LogoOrg>
+            {/* <LogoOrg>
                 {organizacao.logo_path}
-            </LogoOrg>
+                <img src={imgagemEscolhida}/>
+            </LogoOrg> */}
+            <ImageBox></ImageBox>
             <BoxInfoOrg>
                 <NomeOrg>
                     {organizacao.nome}

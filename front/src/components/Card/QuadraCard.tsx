@@ -4,6 +4,7 @@ import Text from "../Text";
 import { styled } from "styled-components";
 import { QuadraType } from "models/quadra.interface";
 import { QuadraAPI } from "../../api";
+import ImageBox from "../Image";
 
 export const BoxQuadra = styled.div`
     background-color: #5E7430;
@@ -60,7 +61,8 @@ export default function QuadraCard({quadra}:{quadra:QuadraType}) {
 
     return (
         <BoxQuadra>
-            <FotoQuadra></FotoQuadra>
+            {/* <FotoQuadra></FotoQuadra> */}
+            <ImageBox width="150px" height="150px" margin="20px"></ImageBox>
             <InfoQuadra>
                 <Text>
                     {quadra.nome}
