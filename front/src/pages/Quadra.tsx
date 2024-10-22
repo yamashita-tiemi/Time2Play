@@ -293,6 +293,12 @@ export const Quadra = () => {
         }
     }
 
+    const isDateInThePast = (date: Date) => {
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0);
+        return date >= hoje;
+    };
+
     return (
         <>
             {quadra ? (
@@ -312,6 +318,7 @@ export const Quadra = () => {
                                             placeholderText="Selecione a data"
                                             locale={ptBR}
                                             showPopperArrow={false}
+                                            filterDate={isDateInThePast}
                                         />
                                     </DivDate>
                                 </BoxInfos>
