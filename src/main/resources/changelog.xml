@@ -39,35 +39,69 @@
                     <insert tableName="Organizacao">
                             <column name="nome" value="Academia Atlética"/>
                             <column name="endereco" value="Rua das Flores, 123, Centro, Juiz de Fora"/>
+                            <column name="logo_path" value="org1.png"/>
                     </insert>
 
                     <insert tableName="Organizacao">
                             <column name="nome" value="Sports Club"/>
                             <column name="endereco" value="Av. Brasil, 45, Juiz de Fora"/>
+                            <column name="logo_path" value="org2.png"/>
                     </insert>
 
                     <insert tableName="Organizacao">
                             <column name="nome" value="Quadras MG"/>
                             <column name="endereco" value="Rua Sete, 789, Juiz de Fora"/>
+                            <column name="logo_path" value="org3.png"/>
                     </insert>
 
 
                     <insert tableName="Quadra">
-                            <column name="nome" value="Quadra Poliesportiva 1"/>
-                            <column name="valor_aluguel" value="100.50"/>
+                            <column name="nome" value="Quadra de Volei"/>
+                            <column name="valor_aluguel" value="120.00"/>
                             <column name="organizacao_id" value="1"/>
+                            <column name="foto_path" value="1.png"/>
                     </insert>
 
                     <insert tableName="Quadra">
-                            <column name="nome" value="Quadra de Tênis"/>
-                            <column name="valor_aluguel" value="150.00"/>
+                            <column name="nome" value="Quadra Poliesportiva"/>
+                            <column name="valor_aluguel" value="100.00"/>
                             <column name="organizacao_id" value="1"/>
+                            <column name="foto_path" value="2.png"/>
                     </insert>
 
                     <insert tableName="Quadra">
-                            <column name="nome" value="Campo de Futebol"/>
+                            <column name="nome" value="Quadra de Basquete Livre"/>
+                            <column name="valor_aluguel" value="80.00"/>
+                            <column name="organizacao_id" value="2"/>
+                            <column name="foto_path" value="3.png"/>
+                    </insert>
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Quadra de Basquete"/>
+                            <column name="valor_aluguel" value="100.00"/>
+                            <column name="organizacao_id" value="2"/>
+                            <column name="foto_path" value="4.png"/>
+                    </insert>
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Quadra Poliesportiva"/>
+                            <column name="valor_aluguel" value="90.00"/>
+                            <column name="organizacao_id" value="2"/>
+                            <column name="foto_path" value="5.png"/>
+                    </insert>
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Campo de Futebol 1"/>
                             <column name="valor_aluguel" value="200.00"/>
-                            <column name="organizacao_id" value="1"/>
+                            <column name="organizacao_id" value="3"/>
+                            <column name="foto_path" value="6.png"/>
+                    </insert>
+
+                    <insert tableName="Quadra">
+                            <column name="nome" value="Campo de Futebol 2"/>
+                            <column name="valor_aluguel" value="200.00"/>
+                            <column name="organizacao_id" value="3"/>
+                            <column name="foto_path" value="7.png"/>
                     </insert>
 
 
@@ -87,19 +121,69 @@
                         <column name="nome" value="Volei"/>
                     </insert>
 
-                    <insert tableName="quadra_modalidade">
-                        <column name="quadra_id" value="1"/>
-                        <column name="modalidade_id" value="2"/>
+                    <insert tableName="Modalidade">
+                        <column name="nome" value="Futsal"/>
                     </insert>
 
+
                     <insert tableName="quadra_modalidade">
-                        <column name="quadra_id" value="2"/>
+                        <column name="quadra_id" value="16"/>
                         <column name="modalidade_id" value="4"/>
                     </insert>
 
                     <insert tableName="quadra_modalidade">
-                        <column name="quadra_id" value="2"/>
-                        <column name="modalidade_id" value="3"/>
+                        <column name="quadra_id" value="17"/>
+                        <column name="modalidade_id" value="4"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="17"/>
+                        <column name="modalidade_id" value="2"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="18"/>
+                        <column name="modalidade_id" value="1"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="18"/>
+                        <column name="modalidade_id" value="2"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="18"/>
+                        <column name="modalidade_id" value="21"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="19"/>
+                        <column name="modalidade_id" value="2"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="20"/>
+                        <column name="modalidade_id" value="4"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="20"/>
+                        <column name="modalidade_id" value="2"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="20"/>
+                        <column name="modalidade_id" value="21"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="21"/>
+                        <column name="modalidade_id" value="1"/>
+                    </insert>
+
+                    <insert tableName="quadra_modalidade">
+                        <column name="quadra_id" value="22"/>
+                        <column name="modalidade_id" value="1"/>
                     </insert>
 
 
@@ -151,22 +235,22 @@
 
 
                     <insert tableName="Agendamento">
-                            <column name="inicio" value="2024-10-21T14:00:00"/>
-                            <column name="fim" value="2024-10-21T15:00:00"/>
+                            <column name="inicio" value="2024-10-29T14:00:00"/>
+                            <column name="fim" value="2024-10-29T15:00:00"/>
 <!--                            <column name="cliente_id" value="1"/>-->
                             <column name="quadra_id" value="1"/>
                     </insert>
 
                     <insert tableName="Agendamento">
-                            <column name="inicio" value="2024-10-21T17:00:00"/>
-                            <column name="fim" value="2024-10-21T18:00:00"/>
+                            <column name="inicio" value="2024-10-25T17:00:00"/>
+                            <column name="fim" value="2024-10-25T18:00:00"/>
 <!--                            <column name="cliente_id" value="2"/>-->
                             <column name="quadra_id" value="1"/>
                     </insert>
 
                     <insert tableName="Agendamento">
-                            <column name="inicio" value="2024-10-22T10:00:00"/>
-                            <column name="fim" value="2024-10-22T11:30:00"/>
+                            <column name="inicio" value="2024-10-26T10:00:00"/>
+                            <column name="fim" value="2024-10-26T11:30:00"/>
 <!--                            <column name="cliente_id" value="3"/>-->
                             <column name="quadra_id" value="3"/>
                     </insert>

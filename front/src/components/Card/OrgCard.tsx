@@ -94,7 +94,7 @@ export default function OrgCard({ organizacao }: { organizacao: any }) {
                 {organizacao.logo_path}
                 <img src={imgagemEscolhida}/>
             </LogoOrg> */}
-            <ImageBox></ImageBox>
+            <ImageBox fileName={organizacao.logo_path}></ImageBox>
             <BoxInfoOrg>
                 <NomeOrg>
                     {organizacao.nome}

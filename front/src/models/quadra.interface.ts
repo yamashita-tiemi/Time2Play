@@ -11,4 +11,5 @@ export interface QuadraType {
 	modalidades: [ModalidadeType];
 	valor: number;
     quadras: List<QuadraType>;
+	foto_path: string;
 }

@@ -59,10 +59,14 @@ export default function QuadraCard({quadra}:{quadra:QuadraType}) {
         navigate(`/${quadra.organizacao.nome}/${quadra.id}`, { state: { id: quadra.id } })
     }
 
+    console.log(quadra.foto_path)
+
     return (
         <BoxQuadra>
             {/* <FotoQuadra></FotoQuadra> */}
-            <ImageBox width="150px" height="150px" margin="20px"></ImageBox>
+            <ImageBox width="150px" height="150px" margin="20px"
+                fileName={quadra.foto_path}
+            ></ImageBox>
             <InfoQuadra>
                 <Text>
                     {quadra.nome}

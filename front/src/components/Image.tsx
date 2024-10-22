@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import imgagemEscolhida from '../../public/org1.png';
 
 const BoxImg = styled.div<{ width?: string; height?: string; margin?: string }>`
     width: ${(props) => props.width || '80%'};
@@ -10,11 +9,15 @@ const BoxImg = styled.div<{ width?: string; height?: string; margin?: string }>`
 `;
 
 export default function ImageBox(
-    {width, height, margin}: {width?: string, height?: string, margin?: string} 
+    {width, height, margin, fileName}: {width?: string, height?: string, margin?: string, fileName: string} 
     ) {
+        let graphImage
+        if(fileName) {
+            graphImage = require('../../public/' + fileName).default
+        }
     return (
         <BoxImg width={width} height={height} margin={margin}>
-            <img src={imgagemEscolhida}/>
+            <img src={ graphImage}/>
         </BoxImg>
     );
 }

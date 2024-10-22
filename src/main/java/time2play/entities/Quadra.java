@@ -84,7 +84,15 @@ public class Quadra {
         this.status = status;
     }
 
-//    public boolean verificarDisponibilidade(LocalDateTime inicio, LocalDateTime fim) {
+    public String getFoto_path() {
+        return foto_path;
+    }
+
+    public void setFoto_path(String foto_path) {
+        this.foto_path = foto_path;
+    }
+
+    //    public boolean verificarDisponibilidade(LocalDateTime inicio, LocalDateTime fim) {
 //        if (this.status == INDISPONIVEL) {
 //            return false;
 //        }
