@@ -1,3 +1,6 @@
+import { QuadraAPI } from "../../api";
+import { QuadraType } from "models/quadra.interface";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
@@ -64,12 +67,26 @@ export const ModalidadeOrg = styled.div`
     border: 2px solid #89ae29;
 `;
 
-export default function OrgCard({organizacao}:{organizacao:any}) {
+export default function OrgCard({ organizacao }: { organizacao: any }) {
     const navigate = useNavigate();
     const goQuadras = () => {
         navigate(`/${organizacao.nome}`, { state: { id_org: organizacao.id } })
     }
-    
+
+    const [quadras, setQuadras] = useState<QuadraType[]>([]);
+    const [isError, setIsError] = useState<boolean>(false);
+
+    useEffect(() => {
+        QuadraAPI.getQuadras(organizacao.id)
+            .then((data) => {
+                setQuadras(data)
+            })
+            .catch((err) => {
+                setIsError(true)
+            });
+        return () => { };
+    }, []);
+
     return (
         <BoxOrg onClick={goQuadras}>
             <LogoOrg>
@@ -80,11 +97,10 @@ export default function OrgCard({organizacao}:{organizacao:any}) {
                     {organizacao.nome}
                 </NomeOrg>
                 <ModalidadesOrg>
-                    <ModalidadeOrg>Volei</ModalidadeOrg>
-                    <ModalidadeOrg>Volei de areia</ModalidadeOrg>
-                    <ModalidadeOrg>Futebol</ModalidadeOrg>
-                    <ModalidadeOrg>Beach Tennis</ModalidadeOrg>
-                    <ModalidadeOrg>Futsal</ModalidadeOrg>
+                    {quadras.map((quadra) => (
+                        quadra.modalidades.map((modalidade) => (
+                            <ModalidadeOrg>{modalidade.nome}</ModalidadeOrg>
+                        ))))}
                 </ModalidadesOrg>
             </BoxInfoOrg>
         </BoxOrg>

@@ -12,9 +12,6 @@ public class Modalidade {
 
     private String nome;
 
-    @ManyToMany(mappedBy = "modalidades")
-    private List<Quadra> quadras;
-
     public Modalidade() {}
 
     public Modalidade(String nome) {
@@ -31,14 +28,6 @@ public class Modalidade {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public List<Quadra> getQuadras() {
-        return quadras;
-    }
-
-    public void setQuadras(List<Quadra> quadras) {
-        this.quadras = quadras;
     }
 }
 

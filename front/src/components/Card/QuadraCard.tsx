@@ -66,13 +66,9 @@ export default function QuadraCard({quadra}:{quadra:QuadraType}) {
                     {quadra.nome}
                 </Text>
                 <BoxModalidades>
-                    {/* {quadra.modalidades.map((modalidade) => (
-                        <ModalidadeQuadra>modalidade.nome</ModalidadeQuadra>
-                    ))} */}
-                    <ModalidadeQuadra>Volei de areia</ModalidadeQuadra>
-                    <ModalidadeQuadra>Futebol</ModalidadeQuadra>
-                    <ModalidadeQuadra>Beach Tennis</ModalidadeQuadra>
-                    <ModalidadeQuadra>Futsal</ModalidadeQuadra>
+                    {quadra.modalidades.map((modalidade) => (
+                        <ModalidadeQuadra>{modalidade.nome}</ModalidadeQuadra>
+                    ))}
                 </BoxModalidades>
                 <ButtonQuadra onClick={goQuadra}>
                     Ver Disponibilidade
